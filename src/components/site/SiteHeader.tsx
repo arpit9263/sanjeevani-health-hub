@@ -107,14 +107,13 @@ export function SiteHeader() {
               onMouseEnter={() => setHover(n.label)}
               onMouseLeave={() => setHover(null)}
             >
-              <Link
-                to={n.href.startsWith("/") && !n.href.includes("#") ? n.href : undefined as any}
-                href={n.href.includes("#") ? n.href : undefined}
+              <a
+                href={n.href}
                 className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
               >
                 {n.label}
                 {n.children && <ChevronDown className="h-3 w-3 opacity-60" />}
-              </Link>
+              </a>
 
               {n.children && hover === n.label && (
                 <div className="absolute left-0 top-full w-80 pt-2">
