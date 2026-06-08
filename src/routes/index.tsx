@@ -7,6 +7,20 @@ import { Doctors } from "@/components/site/Doctors";
 import { Stats } from "@/components/site/Stats";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { CentersOfExcellence } from "@/components/site/CentersOfExcellence";
+import { NetworkPresence } from "@/components/site/NetworkPresence";
+import { PatientJourney } from "@/components/site/PatientJourney";
+import { Accreditations } from "@/components/site/Accreditations";
+import { InsurancePartners } from "@/components/site/InsurancePartners";
+import { Leadership } from "@/components/site/Leadership";
+import { Investors } from "@/components/site/Investors";
+import { InternationalPatients } from "@/components/site/InternationalPatients";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Insights } from "@/components/site/Insights";
+import { CareersTeaser } from "@/components/site/Careers";
+import { CSR } from "@/components/site/CSR";
+import { FAQ } from "@/components/site/FAQ";
+import { EmergencyBanner } from "@/components/site/EmergencyBanner";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
@@ -17,17 +31,17 @@ import "@fontsource/inter/600.css";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sanjeevani ICU & Hospital — Compassionate Critical Care" },
+      { title: "Sanjeevani ICU & Hospital Group — Pan-India Multi-Specialty Care" },
       {
         name: "description",
         content:
-          "Sanjeevani ICU & Hospital delivers 24x7 critical care, multi-specialty treatment and emergency services with experienced doctors and modern facilities.",
+          "Sanjeevani ICU & Hospital Group operates 12 hospitals across India delivering NABH-accredited critical care, multi-specialty treatment and emergency services backed by 3,200+ clinicians.",
       },
-      { property: "og:title", content: "Sanjeevani ICU & Hospital" },
+      { property: "og:title", content: "Sanjeevani ICU & Hospital Group" },
       {
         property: "og:description",
         content:
-          "24x7 ICU, emergency and multi-specialty care led by trusted doctors.",
+          "12 hospitals · 32 cities · 8 Centers of Excellence · 24×7 emergency and ICU care.",
       },
     ],
   }),
@@ -41,9 +55,23 @@ function Index() {
       <main>
         <Hero />
         <Stats />
+        <CentersOfExcellence />
         <Services />
+        <NetworkPresence />
+        <PatientJourney />
+        <Accreditations />
+        <InsurancePartners />
         <About />
+        <Leadership />
         <Doctors />
+        <EmergencyBanner />
+        <Investors />
+        <InternationalPatients />
+        <Testimonials />
+        <Insights />
+        <CareersTeaser />
+        <CSR />
+        <FAQ />
         <Contact />
       </main>
       <SiteFooter />
