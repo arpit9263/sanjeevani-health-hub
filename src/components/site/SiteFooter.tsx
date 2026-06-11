@@ -22,7 +22,23 @@ const cols = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-foreground text-background/85">
+    <footer className="relative isolate overflow-hidden border-t border-border bg-foreground text-background/85">
+      {/* Animated brand aurora background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[600px] w-[1200px] -translate-x-1/2 rounded-full opacity-25 blur-3xl footer-aurora"
+        style={{ backgroundImage: "var(--gradient-brand)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 25% 30%, white 1px, transparent 1.5px), radial-gradient(circle at 75% 70%, white 1px, transparent 1.5px)",
+          backgroundSize: "160px 160px, 220px 220px",
+        }}
+      />
+
       {/* Newsletter */}
       <div className="border-b border-white/10">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 md:grid-cols-[1.5fr_1fr] md:items-center lg:px-8">
@@ -128,6 +144,15 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes auroraDrift {
+          0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.25; }
+          50% { transform: translate(-48%, 10px) scale(1.05); opacity: 0.35; }
+        }
+        .footer-aurora { animation: auroraDrift 14s ease-in-out infinite; }
+      `}</style>
     </footer>
   );
 }
+

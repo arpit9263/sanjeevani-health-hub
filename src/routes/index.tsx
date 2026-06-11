@@ -21,6 +21,9 @@ import { CareersTeaser } from "@/components/site/Careers";
 import { CSR } from "@/components/site/CSR";
 import { FAQ } from "@/components/site/FAQ";
 import { EmergencyBanner } from "@/components/site/EmergencyBanner";
+import { TrustStrip } from "@/components/site/TrustStrip";
+import { Gallery } from "@/components/site/Gallery";
+import { VideoSection } from "@/components/site/VideoSection";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
@@ -54,9 +57,11 @@ function Index() {
       <SiteHeader />
       <main>
         <Hero />
+        <TrustStrip />
         <Stats />
         <CentersOfExcellence />
         <Services />
+        <VideoSection />
         <NetworkPresence />
         <PatientJourney />
         <Accreditations />
@@ -64,6 +69,7 @@ function Index() {
         <About />
         <Leadership />
         <Doctors />
+        <Gallery />
         <EmergencyBanner />
         <Investors />
         <InternationalPatients />
