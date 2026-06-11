@@ -57,9 +57,11 @@ function Index() {
       <SiteHeader />
       <main>
         <Hero />
+        <TrustStrip />
         <Stats />
         <CentersOfExcellence />
         <Services />
+        <VideoSection />
         <NetworkPresence />
         <PatientJourney />
         <Accreditations />
@@ -67,6 +69,7 @@ function Index() {
         <About />
         <Leadership />
         <Doctors />
+        <Gallery />
         <EmergencyBanner />
         <Investors />
         <InternationalPatients />
