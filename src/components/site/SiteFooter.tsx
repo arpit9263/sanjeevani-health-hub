@@ -144,6 +144,15 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes auroraDrift {
+          0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.25; }
+          50% { transform: translate(-48%, 10px) scale(1.05); opacity: 0.35; }
+        }
+        .footer-aurora { animation: auroraDrift 14s ease-in-out infinite; }
+      `}</style>
     </footer>
   );
 }
+
