@@ -42,7 +42,7 @@ const nav: { label: string; href: string; children?: { label: string; href: stri
       { label: "Diagnostics & Imaging", href: "/specialties#diagnostics" },
     ],
   },
-  { label: "Doctors", href: "/#doctors" },
+  { label: "Conditions A–Z", href: "/#diseases" },
   {
     label: "Network",
     href: "/network",
