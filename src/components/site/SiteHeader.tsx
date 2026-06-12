@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { searchIndex } from "@/lib/searchIndex";
 import {
   Menu,
   Phone,
@@ -12,6 +13,7 @@ import {
   Search,
   Mail,
   MapPin,
+  ArrowRight,
 } from "lucide-react";
 
 const nav: { label: string; href: string; children?: { label: string; href: string; desc?: string }[] }[] = [
