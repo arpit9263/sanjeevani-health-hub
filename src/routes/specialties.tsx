@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { CentersOfExcellence } from "@/components/site/CentersOfExcellence";
 import { Services } from "@/components/site/Services";
-import { Doctors } from "@/components/site/Doctors";
 
 export const Route = createFileRoute("/specialties")({
   head: () => ({
@@ -25,7 +24,6 @@ function SpecialtiesPage() {
     >
       <CentersOfExcellence />
       <Services />
-      <Doctors />
     </PageShell>
   );
 }
