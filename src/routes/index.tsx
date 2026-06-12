@@ -3,7 +3,6 @@ import { Hero } from "@/components/site/Hero";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Services } from "@/components/site/Services";
 import { About } from "@/components/site/About";
-import { Doctors } from "@/components/site/Doctors";
 import { Stats } from "@/components/site/Stats";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -24,6 +23,9 @@ import { EmergencyBanner } from "@/components/site/EmergencyBanner";
 import { TrustStrip } from "@/components/site/TrustStrip";
 import { Gallery } from "@/components/site/Gallery";
 import { VideoSection } from "@/components/site/VideoSection";
+import { DiseasesAZ } from "@/components/site/DiseasesAZ";
+import { CallToCare } from "@/components/site/CallToCare";
+import { FloatingActions } from "@/components/site/FloatingActions";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
@@ -57,18 +59,19 @@ function Index() {
       <SiteHeader />
       <main>
         <Hero />
+        <DiseasesAZ />
         <TrustStrip />
         <Stats />
         <CentersOfExcellence />
         <Services />
         <VideoSection />
+        <CallToCare />
         <NetworkPresence />
         <PatientJourney />
         <Accreditations />
         <InsurancePartners />
         <About />
         <Leadership />
-        <Doctors />
         <Gallery />
         <EmergencyBanner />
         <Investors />
@@ -81,6 +84,7 @@ function Index() {
         <Contact />
       </main>
       <SiteFooter />
+      <FloatingActions />
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { searchIndex } from "@/lib/searchIndex";
 import {
   Menu,
   Phone,
@@ -12,6 +13,7 @@ import {
   Search,
   Mail,
   MapPin,
+  ArrowRight,
 } from "lucide-react";
 
 const nav: { label: string; href: string; children?: { label: string; href: string; desc?: string }[] }[] = [
@@ -40,7 +42,7 @@ const nav: { label: string; href: string; children?: { label: string; href: stri
       { label: "Diagnostics & Imaging", href: "/specialties#diagnostics" },
     ],
   },
-  { label: "Doctors", href: "/#doctors" },
+  { label: "Conditions A–Z", href: "/#diseases" },
   {
     label: "Network",
     href: "/network",
@@ -60,6 +62,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -67,6 +72,28 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (searchOpen) setTimeout(() => inputRef.current?.focus(), 50);
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+        if (e.key === "/" && document.activeElement?.tagName === "INPUT") return;
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+      if (e.key === "Escape") setSearchOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [searchOpen]);
+
+  const results = useMemo(() => {
+    const term = q.trim().toLowerCase();
+    if (!term) return searchIndex.slice(0, 8);
+    return searchIndex
+      .filter((s) => s.title.toLowerCase().includes(term) || s.desc.toLowerCase().includes(term) || s.category.toLowerCase().includes(term))
+      .slice(0, 12);
+  }, [q]);
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -160,8 +187,14 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground/70 hover:bg-secondary" aria-label="Search">
-              <Search className="h-4 w-4" />
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="hidden md:inline-flex h-9 items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 text-xs font-medium text-foreground/70 hover:bg-secondary"
+              aria-label="Search"
+            >
+              <Search className="h-3.5 w-3.5" />
+              <span className="hidden lg:inline">Search…</span>
+              <kbd className="hidden lg:inline rounded bg-background px-1.5 py-0.5 text-[10px] text-muted-foreground">⌘K</kbd>
             </button>
             <a
               href="/#contact"
@@ -212,6 +245,60 @@ export function SiteHeader() {
           </div>
         )}
       </div>
+
+      {searchOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-start justify-center bg-foreground/60 px-4 pt-24 backdrop-blur-sm animate-fade-in"
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl animate-scale-in"
+          >
+            <div className="flex items-center gap-3 border-b border-border px-4 py-3">
+              <Search className="h-4 w-4 text-muted-foreground" />
+              <input
+                ref={inputRef}
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Search specialties, doctors, conditions, pages…"
+                className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+              />
+              <kbd className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground">ESC</kbd>
+            </div>
+            <div className="max-h-[60vh] overflow-y-auto p-2">
+              {results.length === 0 ? (
+                <div className="p-6 text-center text-sm text-muted-foreground">
+                  No matches for "{q}".
+                </div>
+              ) : (
+                results.map((r) => (
+                  <a
+                    key={r.title + r.href}
+                    href={r.href}
+                    onClick={() => setSearchOpen(false)}
+                    className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 hover:bg-secondary"
+                  >
+                    <div className="min-w-0">
+                      <div className="truncate text-sm font-semibold text-foreground">{r.title}</div>
+                      <div className="truncate text-xs text-muted-foreground">{r.desc}</div>
+                    </div>
+                    <div className="flex shrink-0 items-center gap-2">
+                      <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                        {r.category}
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                  </a>
+                ))
+              )}
+            </div>
+            <div className="border-t border-border bg-secondary/40 px-4 py-2 text-[11px] text-muted-foreground">
+              Tip: press <kbd className="rounded bg-background px-1">⌘K</kbd> or <kbd className="rounded bg-background px-1">/</kbd> any time.
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
