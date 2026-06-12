@@ -245,6 +245,60 @@ export function SiteHeader() {
           </div>
         )}
       </div>
+
+      {searchOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-start justify-center bg-foreground/60 px-4 pt-24 backdrop-blur-sm animate-fade-in"
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl animate-scale-in"
+          >
+            <div className="flex items-center gap-3 border-b border-border px-4 py-3">
+              <Search className="h-4 w-4 text-muted-foreground" />
+              <input
+                ref={inputRef}
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Search specialties, doctors, conditions, pages…"
+                className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+              />
+              <kbd className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground">ESC</kbd>
+            </div>
+            <div className="max-h-[60vh] overflow-y-auto p-2">
+              {results.length === 0 ? (
+                <div className="p-6 text-center text-sm text-muted-foreground">
+                  No matches for "{q}".
+                </div>
+              ) : (
+                results.map((r) => (
+                  <a
+                    key={r.title + r.href}
+                    href={r.href}
+                    onClick={() => setSearchOpen(false)}
+                    className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 hover:bg-secondary"
+                  >
+                    <div className="min-w-0">
+                      <div className="truncate text-sm font-semibold text-foreground">{r.title}</div>
+                      <div className="truncate text-xs text-muted-foreground">{r.desc}</div>
+                    </div>
+                    <div className="flex shrink-0 items-center gap-2">
+                      <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                        {r.category}
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                  </a>
+                ))
+              )}
+            </div>
+            <div className="border-t border-border bg-secondary/40 px-4 py-2 text-[11px] text-muted-foreground">
+              Tip: press <kbd className="rounded bg-background px-1">⌘K</kbd> or <kbd className="rounded bg-background px-1">/</kbd> any time.
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
