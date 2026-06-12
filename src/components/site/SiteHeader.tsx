@@ -187,8 +187,14 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground/70 hover:bg-secondary" aria-label="Search">
-              <Search className="h-4 w-4" />
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="hidden md:inline-flex h-9 items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 text-xs font-medium text-foreground/70 hover:bg-secondary"
+              aria-label="Search"
+            >
+              <Search className="h-3.5 w-3.5" />
+              <span className="hidden lg:inline">Search…</span>
+              <kbd className="hidden lg:inline rounded bg-background px-1.5 py-0.5 text-[10px] text-muted-foreground">⌘K</kbd>
             </button>
             <a
               href="/#contact"
