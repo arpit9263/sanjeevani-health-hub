@@ -62,6 +62,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -69,6 +72,28 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (searchOpen) setTimeout(() => inputRef.current?.focus(), 50);
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+        if (e.key === "/" && document.activeElement?.tagName === "INPUT") return;
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+      if (e.key === "Escape") setSearchOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [searchOpen]);
+
+  const results = useMemo(() => {
+    const term = q.trim().toLowerCase();
+    if (!term) return searchIndex.slice(0, 8);
+    return searchIndex
+      .filter((s) => s.title.toLowerCase().includes(term) || s.desc.toLowerCase().includes(term) || s.category.toLowerCase().includes(term))
+      .slice(0, 12);
+  }, [q]);
 
   return (
     <header className="sticky top-0 z-50 w-full">
