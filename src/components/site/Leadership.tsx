@@ -1,25 +1,19 @@
-import d1 from "@/assets/doctor-1.jpg";
-import d2 from "@/assets/doctor-2.jpg";
-import d3 from "@/assets/doctor-3.jpg";
 import { Quote } from "lucide-react";
 
 const leaders = [
   {
-    img: d3,
     name: "Dr. Rakesh Mehta",
     role: "Chairman & Managing Director",
     quote:
       "Our purpose is simple — deliver world-class clinical outcomes with the warmth of an Indian household.",
   },
   {
-    img: d1,
     name: "Dr. Priya Sharma",
     role: "Group Medical Director",
     quote:
       "Standardised protocols across our network mean a patient in Lucknow receives the same quality of care as one in Mumbai.",
   },
   {
-    img: d2,
     name: "Mr. Arjun Verma",
     role: "Group Chief Executive Officer",
     quote:
@@ -49,12 +43,9 @@ export function Leadership() {
             >
               <Quote className="absolute right-6 top-6 h-10 w-10 text-primary/10" />
               <div className="flex items-center gap-4">
-                <img
-                  src={l.img}
-                  alt={l.name}
-                  className="h-16 w-16 rounded-full object-cover"
-                  loading="lazy"
-                />
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display text-lg font-bold text-primary">
+                  {l.name.split(" ").slice(-2).map((part) => part[0]).join("")}
+                </div>
                 <div>
                   <div className="font-display text-lg font-semibold text-foreground">{l.name}</div>
                   <div className="text-xs uppercase tracking-wider text-accent">{l.role}</div>
