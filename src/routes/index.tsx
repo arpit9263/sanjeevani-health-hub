@@ -58,28 +58,49 @@ function Index() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main>
+        {/* 1. Hook & emergency utility */}
         <Hero />
-        <DiseasesAZ />
         <TrustStrip />
+
+        {/* 2. Proof / scale */}
         <Stats />
+
+        {/* 3. What we treat */}
         <CentersOfExcellence />
+        <DiseasesAZ />
         <Services />
+
+        {/* 4. Story + emotional cta */}
         <VideoSection />
         <CallToCare />
+
+        {/* 5. Network & journey */}
         <NetworkPresence />
         <PatientJourney />
+
+        {/* 6. Trust + payments */}
         <Accreditations />
         <InsurancePartners />
+
+        {/* 7. About / leadership */}
         <About />
         <Leadership />
+
+        {/* 8. Visual / social proof */}
         <Gallery />
-        <EmergencyBanner />
-        <Investors />
-        <InternationalPatients />
         <Testimonials />
+
+        {/* 9. Urgent banner before secondary content */}
+        <EmergencyBanner />
+
+        {/* 10. Wider organisation */}
+        <InternationalPatients />
+        <Investors />
         <Insights />
         <CareersTeaser />
         <CSR />
+
+        {/* 11. FAQ + contact */}
         <FAQ />
         <Contact />
       </main>
@@ -88,3 +109,4 @@ function Index() {
     </div>
   );
 }
+

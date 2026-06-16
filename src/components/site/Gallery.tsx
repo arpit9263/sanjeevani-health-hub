@@ -48,11 +48,12 @@ export function Gallery() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
               <div
-                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{ backgroundImage: "var(--gradient-hero)" }}
+                className="absolute inset-0 opacity-0 mix-blend-soft-light transition-opacity duration-500 group-hover:opacity-40"
+                style={{ backgroundImage: "var(--gradient-brand)" }}
               />
+
               <figcaption className="absolute inset-x-0 bottom-0 flex translate-y-2 items-end justify-between gap-3 p-4 text-background transition-transform duration-500 group-hover:translate-y-0">
                 <div>
                   <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/75">

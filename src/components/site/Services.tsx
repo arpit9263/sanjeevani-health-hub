@@ -38,27 +38,40 @@ export function Services() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }) => (
+          {services.map(({ icon: Icon, title, desc }, idx) => (
             <div
               key={title}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary/40"
-              style={{ boxShadow: "var(--shadow-card)" }}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-elevated)] animate-rise-in"
+              style={{ boxShadow: "var(--shadow-card)", animationDelay: `${idx * 60}ms` }}
             >
+              {/* Decorative corner glow */}
               <div
-                className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl text-primary-foreground"
+                aria-hidden
+                className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
+                style={{ backgroundImage: "var(--gradient-brand)" }}
+              />
+              {/* Top accent line */}
+              <div
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                style={{ backgroundImage: "var(--gradient-brand)" }}
+              />
+              <div
+                className="relative mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl text-primary-foreground shadow-[var(--shadow-glow)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
                 style={{ backgroundImage: "var(--gradient-brand)" }}
               >
                 <Icon className="h-6 w-6" />
               </div>
-              <h3 className="font-display text-lg font-semibold text-foreground">
+              <h3 className="relative font-display text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                 {title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
                 {desc}
               </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

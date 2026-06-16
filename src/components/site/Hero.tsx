@@ -1,28 +1,34 @@
 import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hospital-hero.jpg";
-import { ArrowRight, HeartPulse, Play, Pause } from "lucide-react";
+import { ArrowRight, HeartPulse, Play, Pause, ShieldCheck, Stethoscope, Activity } from "lucide-react";
 
 const slides = [
   {
-    video: "https://videos.pexels.com/video-files/4122849/4122849-uhd_2560_1440_25fps.mp4",
+    video: "https://cdn.coverr.co/videos/coverr-a-doctor-with-his-team-walking-7649/1080p.mp4",
+    fallback: "https://videos.pexels.com/video-files/7088526/7088526-uhd_2560_1440_25fps.mp4",
     eyebrow: "24×7 Critical Care & Emergency",
-    title: "Compassionate care,",
-    titleAccent: "when every second counts.",
-    desc: "Sanjeevani ICU & Hospital combines experienced doctors, modern infrastructure and a warm human touch to deliver trusted multi-specialty healthcare for your family.",
+    title: "Care that arrives",
+    titleAccent: "the moment you need it.",
+    desc: "A multidisciplinary team of intensivists, surgeons and nurses — ready around the clock to deliver life‑saving, compassionate care for your family.",
+    chip: { icon: HeartPulse, label: "Ambulance in 12 min" },
   },
   {
-    video: "https://videos.pexels.com/video-files/4173251/4173251-hd_1920_1080_25fps.mp4",
+    video: "https://cdn.coverr.co/videos/coverr-medical-team-meeting-in-a-corridor-2633/1080p.mp4",
+    fallback: "https://videos.pexels.com/video-files/4225923/4225923-uhd_2560_1440_25fps.mp4",
     eyebrow: "Advanced Diagnostics & Imaging",
-    title: "Precision medicine,",
-    titleAccent: "powered by modern technology.",
-    desc: "From 3T MRI and 128-slice CT to molecular pathology — our diagnostic backbone gets you to the right answer, faster.",
+    title: "Precise answers,",
+    titleAccent: "delivered by modern medicine.",
+    desc: "3T MRI, 128‑slice CT, robotic surgery and molecular pathology — the right technology, in the right hands, at the right time.",
+    chip: { icon: Activity, label: "3T MRI · 128 slice CT" },
   },
   {
-    video: "https://videos.pexels.com/video-files/3936305/3936305-hd_1920_1080_24fps.mp4",
+    video: "https://cdn.coverr.co/videos/coverr-nurse-checking-a-newborn-baby-1573/1080p.mp4",
+    fallback: "https://videos.pexels.com/video-files/4769486/4769486-uhd_2732_1440_25fps.mp4",
     eyebrow: "Centers of Excellence",
-    title: "Specialist teams,",
+    title: "Specialist programs",
     titleAccent: "for every stage of life.",
-    desc: "Cardiology, neurosciences, oncology, mother & child and more — institute-grade clinical programs under one roof, in 32 cities.",
+    desc: "Cardiology, neurosciences, oncology, mother & child and more — institute‑grade clinical depth, across 32 cities.",
+    chip: { icon: Stethoscope, label: "8 Centres of Excellence" },
   },
 ];
 
@@ -38,15 +44,16 @@ export function Hero() {
   }, [i, paused]);
 
   const s = slides[i];
+  const Chip = s.chip.icon;
 
   return (
     <section id="home" className="relative overflow-hidden pb-24">
+      {/* Videos */}
       <div className="absolute inset-0">
         {slides.map((sl, idx) => (
           <video
             key={sl.video}
             ref={idx === i ? videoRef : null}
-            src={sl.video}
             poster={heroImg}
             autoPlay
             muted
@@ -54,9 +61,13 @@ export function Hero() {
             playsInline
             preload={idx === 0 ? "auto" : "metadata"}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-              idx === i ? "opacity-100" : "opacity-0"
+              idx === i ? "opacity-100 scale-105" : "opacity-0"
             }`}
-          />
+            style={{ transition: "opacity 1s ease-in-out" }}
+          >
+            <source src={sl.video} type="video/mp4" />
+            <source src={sl.fallback} type="video/mp4" />
+          </video>
         ))}
         <img
           src={heroImg}
@@ -64,20 +75,22 @@ export function Hero() {
           aria-hidden
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
-        <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 bg-black/30" />
+        {/* Cinematic dark scrim — keeps video visible, ensures text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/70" />
+        {/* Subtle brand tint */}
+        <div className="absolute inset-0 opacity-60" style={{ backgroundImage: "var(--gradient-hero)" }} />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-28 md:pb-40 text-primary-foreground">
-        <div key={i} className="max-w-2xl animate-fade-in">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium backdrop-blur">
-            <HeartPulse className="h-3.5 w-3.5" />
+        <div key={i} className="max-w-2xl animate-rise-in">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium backdrop-blur-md">
+            <Chip className="h-3.5 w-3.5" />
             {s.eyebrow}
           </span>
           <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[68px]">
             {s.title} <br />
-            <span className="bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
               {s.titleAccent}
             </span>
           </h1>
@@ -86,17 +99,32 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-xl transition-transform hover:scale-[1.03]"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-xl transition-all hover:scale-[1.03] hover:shadow-2xl"
             >
               Book an Appointment
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/20"
+              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20"
             >
-              Our Services
+              Explore Specialties
             </a>
+            <a
+              href="tel:108"
+              className="inline-flex items-center gap-2 rounded-full bg-destructive/90 px-6 py-3 text-sm font-semibold text-white shadow-xl backdrop-blur hover:bg-destructive"
+            >
+              <HeartPulse className="h-4 w-4 animate-slow-pulse" /> Emergency · 108
+            </a>
+          </div>
+
+          {/* live chip */}
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/85 backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            <ShieldCheck className="h-3.5 w-3.5" /> NABH · NABL accredited · 12 hospitals live
           </div>
         </div>
 

@@ -64,7 +64,8 @@ export function VideoSection() {
                   aria-label="Play video"
                 >
                   <img src={poster} alt="Sanjeevani hospital story" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-foreground/30 to-accent/30" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-foreground/40 via-transparent to-transparent" />
+
                   <span className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-2xl transition-transform group-hover:scale-110">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/60 opacity-60" />
                     <Play className="relative h-7 w-7 translate-x-0.5 fill-primary" />
