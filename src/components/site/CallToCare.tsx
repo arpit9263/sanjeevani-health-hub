@@ -4,8 +4,9 @@ import bg from "@/assets/cta-care.jpg";
 export function CallToCare() {
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
-      <img src={bg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent" />
+      <img src={bg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover animate-ken-burns" loading="lazy" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/55 to-transparent" />
+
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-xl text-primary-foreground">
