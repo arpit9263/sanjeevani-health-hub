@@ -72,17 +72,68 @@
 
   --gradient-brand: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   --gradient-soft: linear-gradient(180deg, oklch(0.98 0.02 150) 0%, oklch(0.96 0.025 215) 100%);
-  --gradient-hero: linear-gradient(120deg, oklch(0.62 0.16 145 / 0.92), oklch(0.62 0.14 235 / 0.85));
+  /* Hero: subtle brand tint + cinematic dark scrim so video remains crisp */
+  --gradient-hero: linear-gradient(120deg, oklch(0.62 0.16 145 / 0.45), oklch(0.62 0.14 235 / 0.35));
+  --gradient-scrim: linear-gradient(180deg, oklch(0.18 0.02 200 / 0.55) 0%, oklch(0.12 0.02 200 / 0.75) 100%);
+  --gradient-glass: linear-gradient(180deg, oklch(1 0 0 / 0.08), oklch(1 0 0 / 0.02));
+  --gradient-mesh: radial-gradient(at 20% 10%, oklch(0.72 0.18 145 / 0.15) 0px, transparent 50%),
+                   radial-gradient(at 80% 20%, oklch(0.72 0.13 235 / 0.12) 0px, transparent 50%),
+                   radial-gradient(at 60% 90%, oklch(0.62 0.16 145 / 0.08) 0px, transparent 50%);
 
   --shadow-soft: 0 4px 20px -8px oklch(0.62 0.16 145 / 0.25);
   --shadow-card: 0 8px 30px -12px oklch(0.4 0.08 200 / 0.2);
   --shadow-glow: 0 10px 40px -10px oklch(0.62 0.16 145 / 0.4);
+  --shadow-elevated: 0 20px 50px -20px oklch(0.3 0.06 200 / 0.35);
 
   --chart-1: oklch(0.62 0.16 145);
   --chart-2: oklch(0.62 0.14 235);
   --chart-3: oklch(0.72 0.18 145);
   --chart-4: oklch(0.72 0.13 235);
   --chart-5: oklch(0.45 0.13 150);
+}
+
+/* ---------- Global motion & polish ---------- */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes slow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+@keyframes rise-in {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes ken-burns {
+  0% { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.08) translate(-1%, -1%); }
+}
+
+@utility animate-float { animation: float-y 6s ease-in-out infinite; }
+@utility animate-slow-pulse { animation: slow-pulse 4s ease-in-out infinite; }
+@utility animate-rise-in { animation: rise-in 0.7s cubic-bezier(.2,.7,.2,1) both; }
+@utility animate-ken-burns { animation: ken-burns 18s ease-in-out infinite alternate; }
+@utility animate-shimmer {
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.15), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+@utility card-elevated {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-card);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+}
+@utility card-elevated-hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+  border-color: color-mix(in oklab, var(--primary) 35%, transparent);
 }
 
 .dark {
