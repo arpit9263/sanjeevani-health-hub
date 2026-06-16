@@ -17,7 +17,7 @@ export function InsurancePartners() {
   return (
     <section id="insurance" className="relative overflow-hidden py-20 md:py-24">
       <img src={bg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary-deep/70 to-accent/70" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-accent/75" />
 
       <div
         aria-hidden
