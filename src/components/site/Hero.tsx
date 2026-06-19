@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hospital-hero.jpg";
+import video1 from "@/assets/videos/video1.mp4";
+import video2 from "@/assets/videos/video2.mp4";
+import video3 from "@/assets/videos/video3.mp4";
 import { ArrowRight, HeartPulse, Play, Pause, ShieldCheck, Stethoscope, Activity } from "lucide-react";
 
 const slides = [
   {
-    video: "https://cdn.coverr.co/videos/coverr-a-doctor-with-his-team-walking-7649/1080p.mp4",
-    fallback: "https://videos.pexels.com/video-files/7088526/7088526-uhd_2560_1440_25fps.mp4",
+    video: video1,
+    fallback: video1,
     eyebrow: "24×7 Critical Care & Emergency",
     title: "Care that arrives",
     titleAccent: "the moment you need it.",
@@ -13,8 +16,8 @@ const slides = [
     chip: { icon: HeartPulse, label: "Ambulance in 12 min" },
   },
   {
-    video: "https://cdn.coverr.co/videos/coverr-medical-team-meeting-in-a-corridor-2633/1080p.mp4",
-    fallback: "https://videos.pexels.com/video-files/4225923/4225923-uhd_2560_1440_25fps.mp4",
+    video: video2,
+    fallback: video2,
     eyebrow: "Advanced Diagnostics & Imaging",
     title: "Precise answers,",
     titleAccent: "delivered by modern medicine.",
@@ -22,8 +25,8 @@ const slides = [
     chip: { icon: Activity, label: "3T MRI · 128 slice CT" },
   },
   {
-    video: "https://cdn.coverr.co/videos/coverr-nurse-checking-a-newborn-baby-1573/1080p.mp4",
-    fallback: "https://videos.pexels.com/video-files/4769486/4769486-uhd_2732_1440_25fps.mp4",
+    video: video3,
+    fallback: video3,
     eyebrow: "Centers of Excellence",
     title: "Specialist programs",
     titleAccent: "for every stage of life.",

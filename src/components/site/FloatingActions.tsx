@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUp, Facebook, Instagram, Linkedin, Youtube, MessageCircle, Plus, X } from "lucide-react";
 
 export function FloatingActions() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [show, setShow] = useState(false);
 
   useEffect(() => {

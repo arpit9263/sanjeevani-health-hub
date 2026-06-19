@@ -42,19 +42,19 @@ const nav: { label: string; href: string; children?: { label: string; href: stri
       { label: "Diagnostics & Imaging", href: "/specialties#diagnostics" },
     ],
   },
-  { label: "Conditions A–Z", href: "/#diseases" },
-  {
-    label: "Network",
-    href: "/network",
-    children: [
-      { label: "Hospitals & Centers", href: "/network", desc: "Our pan-India presence" },
-      { label: "Franchise Opportunity", href: "/network#franchise", desc: "Partner with Sanjeevani" },
-      { label: "International Patients", href: "/network#international", desc: "Visa, travel & care plans" },
-    ],
-  },
+  // { label: "Conditions A–Z", href: "/#diseases" },
+  // {
+  //   label: "Network",
+  //   href: "/network",
+  //   children: [
+  //     { label: "Hospitals & Centers", href: "/network", desc: "Our pan-India presence" },
+  //     { label: "Franchise Opportunity", href: "/network#franchise", desc: "Partner with Sanjeevani" },
+  //     { label: "International Patients", href: "/network#international", desc: "Visa, travel & care plans" },
+  //   ],
+  // },
   { label: "Leadership", href: "/leadership" },
   { label: "Careers", href: "/careers" },
-  { label: "Gallery", href: "/#gallery" },
+  // { label: "Gallery", href: "/#gallery" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -187,7 +187,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button
+            {/* <button
               onClick={() => setSearchOpen(true)}
               className="hidden md:inline-flex h-9 items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 text-xs font-medium text-foreground/70 hover:bg-secondary"
               aria-label="Search"
@@ -195,7 +195,7 @@ export function SiteHeader() {
               <Search className="h-3.5 w-3.5" />
               <span className="hidden lg:inline">Search…</span>
               <kbd className="hidden lg:inline rounded bg-background px-1.5 py-0.5 text-[10px] text-muted-foreground">⌘K</kbd>
-            </button>
+            </button> */}
             <a
               href="/#contact"
               className="hidden lg:inline-flex items-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/5"
