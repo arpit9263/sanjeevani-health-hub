@@ -98,7 +98,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Utility bar — subtle, low contrast so it never fights the main bar */}
-      <div className="hidden md:block bg-primary text-primary-foreground/90">
+      <div className="hidden md:block bg-accent text-primary-foreground/90">
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-4 text-[11px] sm:px-6 lg:px-8">
           <div className="flex items-center gap-5">
             <span className="inline-flex items-center gap-1.5">
@@ -205,8 +205,7 @@ export function SiteHeader() {
             </a>
             <a
               href="tel:+911234567890"
-              className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.03]"
-              style={{ backgroundImage: "var(--gradient-brand)" }}
+              className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] bg-destructive/90 transition-transform hover:scale-[1.03]"
             >
               <Phone className="h-4 w-4" />
               Emergency
