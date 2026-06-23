@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { NetworkPresence } from "@/components/site/NetworkPresence";
-import { Investors } from "@/components/site/Investors";
 import { InternationalPatients } from "@/components/site/InternationalPatients";
 import { MapPin } from "lucide-react";
 
@@ -62,9 +61,7 @@ function NetworkPage() {
         </div>
       </section>
 
-      <section id="franchise">
-        <Investors />
-      </section>
+
 
       <InternationalPatients />
     </PageShell>

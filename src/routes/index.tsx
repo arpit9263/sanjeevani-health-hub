@@ -12,7 +12,6 @@ import { PatientJourney } from "@/components/site/PatientJourney";
 import { Accreditations } from "@/components/site/Accreditations";
 import { InsurancePartners } from "@/components/site/InsurancePartners";
 import { Leadership } from "@/components/site/Leadership";
-import { Investors } from "@/components/site/Investors";
 import { InternationalPatients } from "@/components/site/InternationalPatients";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Insights } from "@/components/site/Insights";
@@ -95,7 +94,6 @@ function Index() {
 
         {/* 10. Wider organisation */}
         <InternationalPatients />
-        <Investors />
         <Insights />
         <CareersTeaser />
         <CSR />
