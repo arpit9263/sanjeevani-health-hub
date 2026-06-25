@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hospital-hero.jpg";
-import video1 from "@/assets/videos/video1.mp4";
-import video2 from "@/assets/videos/video2.mp4";
-import video3 from "@/assets/videos/video3.mp4";
+
 import { ArrowRight, HeartPulse, Play, Pause, ShieldCheck, Stethoscope, Activity } from "lucide-react";
 
 const slides = [
   {
-    video: video1,
-    fallback: video1,
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782391996/reception_u3flo0.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782391996/reception_u3flo0.mp4',
     eyebrow: "24×7 Critical Care & Emergency",
     title: "Care that arrives",
     titleAccent: "the moment you need it.",
@@ -16,17 +14,16 @@ const slides = [
     chip: { icon: HeartPulse, label: "Ambulance in 12 min" },
   },
   {
-    video: video2,
-    fallback: video2,
-    eyebrow: "Advanced Diagnostics & Imaging",
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392237/entrance_ssqyso.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392237/entrance_ssqyso.mp4;',
     title: "Precise answers,",
     titleAccent: "delivered by modern medicine.",
     desc: "3T MRI, 128‑slice CT, robotic surgery and molecular pathology — the right technology, in the right hands, at the right time.",
     chip: { icon: Activity, label: "3T MRI · 128 slice CT" },
   },
   {
-    video: video3,
-    fallback: video3,
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392747/office_bws8qc.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392747/office_bws8qc.mp4',
     eyebrow: "Centers of Excellence",
     title: "Specialist programs",
     titleAccent: "for every stage of life.",
@@ -63,9 +60,8 @@ export function Hero() {
             loop
             playsInline
             preload={idx === 0 ? "auto" : "metadata"}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-              idx === i ? "opacity-100 scale-105" : "opacity-0"
-            }`}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${idx === i ? "opacity-100 scale-105" : "opacity-0"
+              }`}
             style={{ transition: "opacity 1s ease-in-out" }}
           >
             <source src={sl.video} type="video/mp4" />
@@ -139,9 +135,8 @@ export function Hero() {
                 key={idx}
                 onClick={() => setI(idx)}
                 aria-label={`Slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all ${
-                  idx === i ? "w-10 bg-white" : "w-5 bg-white/40 hover:bg-white/70"
-                }`}
+                className={`h-1.5 rounded-full transition-all ${idx === i ? "w-10 bg-white" : "w-5 bg-white/40 hover:bg-white/70"
+                  }`}
               />
             ))}
           </div>
