@@ -7,7 +7,7 @@ export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
       { title: "Careers at Sanjeevani — Do the best work of your career" },
-      { name: "description", content: "Explore clinical, nursing, allied health and corporate roles across our pan-India network." },
+      { name: "description", content: "Explore clinical, nursing, allied health and hospital support roles at Sanjeevani ICU & Hospital, Jhansi." },
     ],
   }),
   component: CareersPage,
@@ -29,7 +29,7 @@ function CareersPage() {
               { icon: GraduationCap, t: "Learn relentlessly", d: "Structured residency, fellowships and continuing education stipends." },
               { icon: Heart, t: "Patient-first culture", d: "Clinical decisions led by clinicians, never by short-term targets." },
               { icon: Users, t: "Genuine respect", d: "Anti-harassment, mental health support and a transparent grievance process." },
-              { icon: Sparkles, t: "Grow with the network", d: "Internal mobility across 12 cities and clear leadership pathways." },
+              { icon: Sparkles, t: "Grow with the network", d: "Clear training, patient-care protocols and growth opportunities in Jhansi." },
             ].map(({ icon: Icon, t, d }) => (
               <div key={t} className="rounded-2xl border border-border bg-card p-6" style={{ boxShadow: "var(--shadow-card)" }}>
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-primary-foreground" style={{ backgroundImage: "var(--gradient-brand)" }}>

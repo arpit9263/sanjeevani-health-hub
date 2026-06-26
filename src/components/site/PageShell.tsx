@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
-import heroBg from "@/assets/hospital-hero.jpg";
+import { hospitalImages } from "@/lib/images";
 
 interface PageShellProps {
   eyebrow?: string;
@@ -12,7 +12,7 @@ interface PageShellProps {
 }
 
 export function PageShell({ eyebrow, title, subtitle, image, children }: PageShellProps) {
-  const bg = image ?? heroBg;
+  const bg = image ?? hospitalImages.frontClose;
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />

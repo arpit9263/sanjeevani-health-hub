@@ -1,9 +1,10 @@
 import { Play, ShieldCheck, HeartPulse, Users } from "lucide-react";
 import { useState } from "react";
+import { hospitalImages } from "@/lib/images";
 
 export function VideoSection() {
   const [playing, setPlaying] = useState(false);
-  const poster = "https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1600&q=70";
+  const poster = hospitalImages.icuRound;
 
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
@@ -17,19 +18,17 @@ export function VideoSection() {
               The Sanjeevani Story
             </span>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-foreground md:text-4xl">
-              Two decades of care, told by the people who lived it.
+              Sanjeevani care, told through trust and recovery.
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Watch how our doctors, nurses and patients describe the care
-              philosophy that powers 12 hospitals across India — and meet a few
-              families whose lives changed inside our walls.
+              See how our doctors, nurses and care team support families through emergency, ICU and specialist treatment in Jhansi.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
-                { icon: HeartPulse, k: "1.2M+", v: "lives touched" },
-                { icon: Users, k: "3,200+", v: "clinicians" },
-                { icon: ShieldCheck, k: "NABH", v: "accredited" },
+                { icon: HeartPulse, k: "3 Lakh+", v: "patients treated" },
+                { icon: Users, k: "15+", v: "doctors" },
+                { icon: ShieldCheck, k: "49+", v: "beds" },
               ].map(({ icon: Icon, k, v }) => (
                 <div key={k} className="rounded-2xl border border-border bg-card p-4">
                   <Icon className="h-5 w-5 text-primary" />

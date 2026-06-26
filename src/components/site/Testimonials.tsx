@@ -1,9 +1,9 @@
 import { Star, Quote } from "lucide-react";
 
 const stories = [
-  { name: "Anita R.", city: "Delhi", role: "Daughter of patient", text: "From the ICU team to the discharge desk, every staff member made my father feel safe. The transparent billing and follow-up calls were a relief." },
+  { name: "Anita R.", city: "Jhansi", role: "Daughter of patient", text: "From the ICU team to the discharge desk, every staff member made my father feel safe. The transparent billing and follow-up calls were a relief." },
   { name: "Mohammed K.", city: "Dubai", role: "International patient", text: "I came for a complex spine surgery. The international desk handled my visa, my mother's stay, and every translation. My surgeon was world-class." },
-  { name: "Sneha & Rohit", city: "Bengaluru", role: "Parents", text: "Our high-risk pregnancy was managed by an incredible team. The Level-III NICU saved our baby. Forever grateful to the Sanjeevani family." },
+  { name: "Sneha & Rohit", city: "Jhansi", role: "Parents", text: "Our high-risk pregnancy was managed by an incredible team. The Level-III NICU saved our baby. Forever grateful to the Sanjeevani family." },
   { name: "Vikram S.", city: "Jaipur", role: "Cardiac patient", text: "Angioplasty done at 2 AM. The cath lab team moved like clockwork. Discharged in three days with a full rehab plan." },
   { name: "Lakshmi P.", city: "Chennai", role: "Oncology patient", text: "Two years of chemotherapy and not a single billing surprise. My oncologist still messages on my scan anniversaries." },
   { name: "Imran & Farah", city: "Lucknow", role: "Family", text: "Our grandmother's hip replacement and rehab went so smoothly. The physio team visited us at home for six weeks." },
@@ -55,7 +55,7 @@ export function Testimonials() {
               </div>
               <span className="text-sm font-medium text-foreground">4.8/5 average rating</span>
             </div>
-            <p className="mt-2 text-sm">From 12,400+ verified Google &amp; Practo reviews.</p>
+            <p className="mt-2 text-sm">Trusted by families across Jhansi and nearby areas.</p>
           </div>
         </div>
       </div>

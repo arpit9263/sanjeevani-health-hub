@@ -7,22 +7,17 @@ import { Stats } from "@/components/site/Stats";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CentersOfExcellence } from "@/components/site/CentersOfExcellence";
-import { NetworkPresence } from "@/components/site/NetworkPresence";
 import { PatientJourney } from "@/components/site/PatientJourney";
-import { Accreditations } from "@/components/site/Accreditations";
 import { InsurancePartners } from "@/components/site/InsurancePartners";
 import { Leadership } from "@/components/site/Leadership";
-import { InternationalPatients } from "@/components/site/InternationalPatients";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Insights } from "@/components/site/Insights";
 import { CareersTeaser } from "@/components/site/Careers";
-import { CSR } from "@/components/site/CSR";
 import { FAQ } from "@/components/site/FAQ";
 import { EmergencyBanner } from "@/components/site/EmergencyBanner";
 import { TrustStrip } from "@/components/site/TrustStrip";
 import { Gallery } from "@/components/site/Gallery";
 import { VideoSection } from "@/components/site/VideoSection";
-import { DiseasesAZ } from "@/components/site/DiseasesAZ";
 import { CallToCare } from "@/components/site/CallToCare";
 import { FloatingActions } from "@/components/site/FloatingActions";
 import "@fontsource/poppins/500.css";
@@ -31,21 +26,22 @@ import "@fontsource/poppins/700.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
+import { hospitalInfo, siteDetails, stats } from "@/lib/siteData";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sanjeevani ICU & Hospital Group — Pan-India Multi-Specialty Care" },
+      { title: "Sanjeevani ICU & Hospital — Critical Care & Multi-Specialty Hospital in Jhansi" },
       {
         name: "description",
         content:
-          "Sanjeevani ICU & Hospital Group operates 12 hospitals across India delivering NABH-accredited critical care, multi-specialty treatment and emergency services backed by 3,200+ clinicians.",
+          "Sanjeevani ICU & Hospital in Jhansi provides 24×7 emergency care, ICU support, specialist doctors, cashless insurance and multi-specialty treatment.",
       },
-      { property: "og:title", content: "Sanjeevani ICU & Hospital Group" },
+      { property: "og:title", content: "Sanjeevani ICU & Hospital" },
       {
         property: "og:description",
         content:
-          "12 hospitals · 32 cities · 8 Centers of Excellence · 24×7 emergency and ICU care.",
+          "15+ doctors · 49+ beds · 3 Lakh+ patients treated · 24×7 emergency and ICU care.",
       },
     ],
   }),
@@ -61,29 +57,27 @@ function Index() {
         <Hero />
         <TrustStrip />
 
+           {/* 7. About / leadership */}
+        <About />
+
         {/* 2. Proof / scale */}
         <Stats />
 
         {/* 3. What we treat */}
         <CentersOfExcellence />
-        <DiseasesAZ />
         <Services />
 
         {/* 4. Story + emotional cta */}
         <VideoSection />
         <CallToCare />
 
-        {/* 5. Network & journey */}
-        <NetworkPresence />
+        {/* 5. Patient journey */}
         <PatientJourney />
 
         {/* 6. Trust + payments */}
-        <Accreditations />
         <InsurancePartners />
 
-        {/* 7. About / leadership */}
-        <About />
-        <Leadership />
+     
 
         {/* 8. Visual / social proof */}
         <Gallery />
@@ -93,10 +87,8 @@ function Index() {
         <EmergencyBanner />
 
         {/* 10. Wider organisation */}
-        <InternationalPatients />
         <Insights />
         <CareersTeaser />
-        <CSR />
 
         {/* 11. FAQ + contact */}
         <FAQ />

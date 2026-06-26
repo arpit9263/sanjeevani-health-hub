@@ -1,21 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Leadership } from "@/components/site/Leadership";
-
-const board = [
-  { name: "Dr. Rakesh Mehta", role: "Chairman & MD", bio: "Cardiologist · 28 yrs · Founder, Sanjeevani Group" },
-  { name: "Mr. Arjun Verma", role: "Group CEO", bio: "Ex-McKinsey · 20 yrs in healthcare strategy" },
-  { name: "Dr. Priya Sharma", role: "Group Medical Director", bio: "Intensivist · 15 yrs · MD AIIMS Delhi" },
-  { name: "Ms. Kavita Nair", role: "Chief Financial Officer", bio: "Chartered Accountant · ex-Big Four" },
-  { name: "Dr. Sameer Khan", role: "Chief of Surgery", bio: "Surgical oncologist · 22 yrs" },
-  { name: "Ms. Nandini Iyer", role: "Chief People Officer", bio: "20 yrs in healthcare HR & culture" },
-];
+import { leadershipDoctors, medicalExperts, siteDetails } from "@/lib/siteData";
 
 export const Route = createFileRoute("/leadership")({
   head: () => ({
     meta: [
-      { title: "Leadership & Governance — Sanjeevani Hospital Group" },
-      { name: "description", content: "Meet the board and management team guiding Sanjeevani's clinical and corporate journey." },
+      { title: `Leadership & Doctors — ${siteDetails.copyrightName}` },
+      { name: "description", content: "Meet Sanjeevani ICU & Hospital leadership doctors and specialist consultants in Jhansi." },
     ],
   }),
   component: LeadershipPage,
@@ -24,29 +16,41 @@ export const Route = createFileRoute("/leadership")({
 function LeadershipPage() {
   return (
     <PageShell
-      eyebrow="Leadership & Governance"
-      title="Clinicians at the helm. Professionals running the operation."
-      subtitle="Our leadership team blends decades of clinical experience with disciplined corporate governance — independent directors, a clinical advisory board and structured risk oversight."
+      eyebrow="Leadership & Doctors"
+      title="Experienced doctors guiding critical care in Jhansi."
+      subtitle="Meet the leadership team and medical experts associated with Sanjeevani ICU & Hospital."
     >
       <Leadership />
 
-      <section className="py-20 md:py-28" style={{ backgroundImage: "var(--gradient-soft)" }}>
+      <section className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Board & Management</span>
-          <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">Leaders shaping Sanjeevani</h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {board.map((b) => (
-              <article key={b.name} className="overflow-hidden rounded-2xl border border-border bg-card p-6" style={{ boxShadow: "var(--shadow-card)" }}>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Leadership Team</span>
+          <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">Hospital leadership doctors</h2>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {leadershipDoctors.map((person) => (
+              <article key={person.name} className="rounded-3xl border border-border bg-card p-6" style={{ boxShadow: "var(--shadow-card)" }}>
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 font-display text-base font-bold text-primary">
-                  {b.name.split(" ").slice(-2).map((part) => part[0]).join("")}
+                  {person.name.split(" ").slice(-2).map((part) => part[0]).join("")}
                 </div>
-                <div className="mt-5">
-                  <h3 className="font-display text-lg font-semibold text-foreground">{b.name}</h3>
-                  <div className="text-xs uppercase tracking-wider text-accent">{b.role}</div>
-                  <p className="mt-2 text-sm text-muted-foreground">{b.bio}</p>
-                </div>
+                <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{person.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-accent">{person.role}</p>
+                <p className="mt-3 text-sm font-medium text-foreground">{person.qualification}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{person.specialty}</p>
               </article>
             ))}
+          </div>
+
+          <div className="mt-16">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Medical Experts</span>
+            <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">Specialist consultants</h2>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {medicalExperts.map((doctor) => (
+                <article key={doctor.name} className="rounded-2xl border border-border bg-card p-5" style={{ boxShadow: "var(--shadow-card)" }}>
+                  <h3 className="font-display text-base font-semibold text-foreground">{doctor.name}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{doctor.specialty}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

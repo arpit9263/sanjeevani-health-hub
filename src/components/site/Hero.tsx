@@ -5,8 +5,8 @@ import { ArrowRight, HeartPulse, Play, Pause, ShieldCheck, Stethoscope, Activity
 
 const slides = [
   {
-    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782391996/reception_u3flo0.mp4',
-    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782391996/reception_u3flo0.mp4',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
     eyebrow: "24×7 Critical Care & Emergency",
     title: "Care that arrives",
     titleAccent: "the moment you need it.",
@@ -14,16 +14,17 @@ const slides = [
     chip: { icon: HeartPulse, label: "Ambulance in 12 min" },
   },
   {
-    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392237/entrance_ssqyso.mp4',
-    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392237/entrance_ssqyso.mp4;',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782463811/0626_8_hwpomb.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782463811/0626_8_hwpomb.mp4;',
+    eyebrow: "Advanced Diagnostics & Imaging",    
     title: "Precise answers,",
     titleAccent: "delivered by modern medicine.",
     desc: "3T MRI, 128‑slice CT, robotic surgery and molecular pathology — the right technology, in the right hands, at the right time.",
     chip: { icon: Activity, label: "3T MRI · 128 slice CT" },
   },
   {
-    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
-    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392747/office_bws8qc.mp4',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782461936/0626_5_sm6kfh.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782461936/0626_5_sm6kfh.mp4',
     eyebrow: "Centers of Excellence",
     title: "Specialist programs",
     titleAccent: "for every stage of life.",
@@ -39,7 +40,7 @@ export function Hero() {
 
   useEffect(() => {
     if (paused) return;
-    const t = setTimeout(() => setI((p) => (p + 1) % slides.length), 7500);
+    const t = setTimeout(() => setI((p) => (p + 1) % slides.length), 5000);
     return () => clearTimeout(t);
   }, [i, paused]);
 
@@ -117,14 +118,6 @@ export function Hero() {
             </a>
           </div>
 
-          {/* live chip */}
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/85 backdrop-blur">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            <ShieldCheck className="h-3.5 w-3.5" /> NABH · NABL accredited · 12 hospitals live
-          </div>
         </div>
 
         {/* Slide controls */}

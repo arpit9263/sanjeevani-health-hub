@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { searchIndex } from "@/lib/searchIndex";
+import { hospitalInfo, telHref } from "@/lib/siteData";
 import {
   Menu,
   Phone,
@@ -9,7 +10,6 @@ import {
   ChevronDown,
   Ambulance,
   CalendarCheck,
-  Globe2,
   Search,
   Mail,
   MapPin,
@@ -22,9 +22,8 @@ const nav: { label: string; href: string; children?: { label: string; href: stri
     label: "About",
     href: "/about",
     children: [
-      { label: "Our Story", href: "/about", desc: "Two decades of trusted care" },
+      { label: "Our Story", href: "/about", desc: "Serving Jhansi since 2019" },
       { label: "Vision & Mission", href: "/about#mission", desc: "Why we exist" },
-      { label: "Accreditations", href: "/about#accreditations", desc: "NABH, NABL & ISO standards" },
       { label: "CSR & Community", href: "/about#csr", desc: "Health camps and outreach" },
     ],
   },
@@ -33,25 +32,15 @@ const nav: { label: string; href: string; children?: { label: string; href: stri
     href: "/specialties",
     children: [
       { label: "Critical Care & ICU", href: "/specialties#icu" },
+      { label: "Anaesthesia", href: "/specialties#anaesthesia" },
+      { label: "Orthopedics", href: "/specialties#orthopedics" },
       { label: "Cardiology", href: "/specialties#cardiology" },
-      { label: "Neurology & Neurosurgery", href: "/specialties#neuro" },
-      { label: "Orthopedics & Spine", href: "/specialties#ortho" },
-      { label: "Mother & Child", href: "/specialties#mch" },
-      { label: "Oncology", href: "/specialties#onco" },
-      { label: "Renal Sciences", href: "/specialties#renal" },
-      { label: "Diagnostics & Imaging", href: "/specialties#diagnostics" },
+      { label: "Urology", href: "/specialties#urology" },
+      { label: "Neurosurgery", href: "/specialties#neurosurgery" },
+      { label: "OBS & Gynecology", href: "/specialties#gynecology" },
     ],
   },
   // { label: "Conditions A–Z", href: "/#diseases" },
-  // {
-  //   label: "Network",
-  //   href: "/network",
-  //   children: [
-  //     { label: "Hospitals & Centers", href: "/network", desc: "Our pan-India presence" },
-  //     { label: "Franchise Opportunity", href: "/network#franchise", desc: "Partner with Sanjeevani" },
-  //     { label: "International Patients", href: "/network#international", desc: "Visa, travel & care plans" },
-  //   ],
-  // },
   { label: "Leadership", href: "/leadership" },
   { label: "Careers", href: "/careers" },
   // { label: "Gallery", href: "/#gallery" },
@@ -101,22 +90,22 @@ export function SiteHeader() {
       <div className="hidden md:block bg-accent text-primary-foreground/90">
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-4 text-[11px] sm:px-6 lg:px-8">
           <div className="flex items-center gap-5">
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin className="h-3 w-3 opacity-80" /> 12 centers across India
-            </span>
+            {/* <span className="inline-flex items-center gap-1.5">
+              <MapPin className="h-3 w-3 opacity-80" /> {hospitalInfo.address}
+            </span> */}
             <span className="hidden lg:inline-flex items-center gap-1.5">
-              <Mail className="h-3 w-3 opacity-80" /> care@sanjeevanihospital.in
+              <Mail className="h-3 w-3 opacity-80" /> {hospitalInfo.email}
             </span>
             <span className="hidden xl:inline-flex items-center gap-1.5">
-              <Globe2 className="h-3 w-3 opacity-80" /> International patients welcome
+              {hospitalInfo.tagline}
             </span>
           </div>
           <div className="flex items-center gap-5">
             <Link to="/careers" className="hover:text-white">Careers</Link>
             <a href="/#insights" className="hover:text-white">Newsroom</a>
-            <a href="/network#franchise" className="hover:text-white">Investor Relations</a>
-            <a href="tel:108" className="inline-flex items-center gap-1.5 font-semibold text-white">
-              <Ambulance className="h-3.5 w-3.5" /> Ambulance: 108
+            <a href="/#insurance" className="hover:text-white">Insurance</a>
+            <a href={telHref(hospitalInfo.emergency)} className="inline-flex items-center gap-1.5 font-semibold text-white">
+              <Ambulance className="h-3.5 w-3.5" /> Emergency: +91 {hospitalInfo.emergency}
             </a>
           </div>
         </div>
@@ -137,10 +126,10 @@ export function SiteHeader() {
             </div>
             <div className="flex min-w-0 flex-col leading-tight">
               <span className="font-display text-xl font-bold text-primary truncate">
-                Sanjeevani
+                {hospitalInfo.shortName}
               </span>
               <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground truncate">
-                ICU &amp; Hospital Group
+                ICU &amp; Hospital
               </span>
             </div>
           </Link>
@@ -204,7 +193,7 @@ export function SiteHeader() {
               Book Appointment
             </a>
             <a
-              href="tel:+911234567890"
+              href={telHref(hospitalInfo.emergency)}
               className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] bg-destructive/90 transition-transform hover:scale-[1.03]"
             >
               <Phone className="h-4 w-4" />
@@ -234,11 +223,11 @@ export function SiteHeader() {
                 </a>
               ))}
               <a
-                href="tel:+911234567890"
+                href={telHref(hospitalInfo.emergency)}
                 className="mt-3 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground"
                 style={{ backgroundImage: "var(--gradient-brand)" }}
               >
-                <Phone className="h-4 w-4" /> Emergency Helpline
+                <Phone className="h-4 w-4" /> +91 {hospitalInfo.emergency}
               </a>
             </div>
           </div>

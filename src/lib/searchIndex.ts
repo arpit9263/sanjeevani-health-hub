@@ -33,7 +33,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Insurance & TPA Network", desc: "80+ empanelled insurers", href: "/#insurance", category: "Page" },
   { title: "Gallery", desc: "Hospital tour and patient stories", href: "/#gallery", category: "Page" },
   { title: "Contact & Helpline", desc: "Book appointment, branch directory", href: "/#contact", category: "Page" },
-  { title: "Accreditations", desc: "NABH, NABL and ISO standards", href: "/about#accreditations", category: "Page" },
   { title: "Sanjeevani Foundation (CSR)", desc: "Health camps and community outreach", href: "/about#csr", category: "Page" },
 
   // Conditions

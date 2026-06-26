@@ -1,9 +1,4 @@
-const stats = [
-  { value: "20+", label: "Years of Trust" },
-  { value: "50K+", label: "Patients Treated" },
-  { value: "40+", label: "Expert Doctors" },
-  { value: "24/7", label: "Emergency Care" },
-];
+import { stats } from "@/lib/siteData";
 
 export function Stats() {
   return (
@@ -14,7 +9,8 @@ export function Stats() {
             <div className="font-display text-3xl font-bold text-primary md:text-4xl">
               {s.value}
             </div>
-            <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
+            <div className="mt-1 text-sm font-semibold text-foreground">{s.label}</div>
+            <div className="mx-auto mt-1 max-w-[170px] text-xs text-muted-foreground">{s.detail}</div>
           </div>
         ))}
       </div>

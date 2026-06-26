@@ -1,73 +1,30 @@
 import { Logo } from "./Logo";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Youtube, Twitter, Ambulance } from "lucide-react";
+import { hospitalInfo, services, siteDetails, telHref } from "@/lib/siteData";
 
 const cols = [
-  {
-    title: "Specialties",
-    links: ["Cardiology", "Neurosciences", "Critical Care", "Orthopedics", "Mother & Child", "Oncology", "Renal Sciences", "Diagnostics"],
-  },
-  {
-    title: "Patient Care",
-    links: ["Book Appointment", "International Patients", "Insurance & TPA", "Health Packages", "Second Opinion", "Tele-consultation", "Home Care", "Pharmacy"],
-  },
-  {
-    title: "Corporate",
-    links: ["About Us", "Leadership", "Careers", "Newsroom", "Investor Relations", "Franchise Opportunity", "Sanjeevani Foundation", "Awards"],
-  },
-  {
-    title: "Resources",
-    links: ["Health Insights", "Patient Rights", "Privacy Policy", "Terms of Use", "Sitemap", "Grievance Redressal", "Contact Us", "Feedback"],
-  },
+  { title: "Specialties", links: services.slice(0, 8).map((s) => s.title) },
+  { title: "Patient Care", links: ["Book Appointment", "Emergency Care", "Insurance & TPA", "ICU Support", "OPD Consultation", "Critical Care"] },
+  { title: "Hospital", links: ["About Us", "Leadership", "Careers", "Gallery", "Contact Us", "Patient Support"] },
+  { title: "Resources", links: ["Health Insights", "Patient Rights", "Privacy Policy", "Terms of Use", "Sitemap", "Feedback"] },
 ];
 
 export function SiteFooter() {
   return (
     <footer className="relative isolate overflow-hidden border-t border-border bg-foreground text-background/85">
-      {/* Animated brand aurora background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[600px] w-[1200px] -translate-x-1/2 rounded-full opacity-25 blur-3xl footer-aurora"
-        style={{ backgroundImage: "var(--gradient-brand)" }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 25% 30%, white 1px, transparent 1.5px), radial-gradient(circle at 75% 70%, white 1px, transparent 1.5px)",
-          backgroundSize: "160px 160px, 220px 220px",
-        }}
-      />
+      <div aria-hidden="true" className="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[600px] w-[1200px] -translate-x-1/2 rounded-full opacity-25 blur-3xl footer-aurora" style={{ backgroundImage: "var(--gradient-brand)" }} />
 
-      {/* Newsletter */}
       <div className="border-b border-white/10">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 md:grid-cols-[1.5fr_1fr] md:items-center lg:px-8">
           <div>
-            <div className="font-display text-2xl font-bold text-white">
-              Stay informed with Sanjeevani Health Insights
-            </div>
-            <p className="mt-2 text-sm text-background/70 max-w-xl">
-              Monthly newsletter from our clinicians — preventive tips, latest
-              treatments and stories from across our network.
+            <div className="font-display text-2xl font-bold text-white">Stay connected with {hospitalInfo.shortName}</div>
+            <p className="mt-2 max-w-xl text-sm text-background/70">
+              For appointments, emergency support and insurance queries, contact our reception team directly.
             </p>
           </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col gap-3 sm:flex-row"
-          >
-            <input
-              type="email"
-              placeholder="you@example.com"
-              required
-              className="flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/50 outline-none focus:border-white/40"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary hover:scale-[1.03] transition-transform"
-            >
-              Subscribe
-            </button>
-          </form>
+          <a href={telHref(hospitalInfo.reception)} className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary hover:scale-[1.03] transition-transform">
+            Call Reception: +91 {hospitalInfo.reception}
+          </a>
         </div>
       </div>
 
@@ -77,42 +34,34 @@ export function SiteFooter() {
             <div className="flex items-center gap-3">
               <Logo className="h-14 w-14 rounded-md bg-white p-1 object-contain" />
               <div>
-                <div className="font-display text-xl font-bold text-white">Sanjeevani</div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-background/60">
-                  ICU &amp; Hospital Group
-                </div>
+                <div className="font-display text-xl font-bold text-white">{hospitalInfo.name}</div>
+                <div className="text-[10px] uppercase tracking-[0.18em] text-background/60">{hospitalInfo.tagline}</div>
               </div>
             </div>
-            <p className="mt-5 text-sm text-background/70 max-w-sm">
-              A pan-India multi-specialty hospital network — delivering
-              compassionate, accredited and accessible healthcare across 32
-              cities.
+            <p className="mt-5 max-w-sm text-sm text-background/70">
+              {hospitalInfo.name} is a Jhansi-based ICU and multi-specialty hospital serving patients with emergency care, specialist doctors, insurance support and compassionate treatment.
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-background/80">
               <div className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 mt-0.5 text-white/60" />
-                Corporate Office, 123 Health Avenue, City Center, India
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/60" />
+                {hospitalInfo.address}
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-white/60" /> +91 12345 67890
+                <Phone className="h-4 w-4 text-white/60" /> +91 {hospitalInfo.reception}
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-white/60" /> care@sanjeevanihospital.in
+                <Mail className="h-4 w-4 text-white/60" /> {hospitalInfo.email}
               </div>
               <div className="flex items-center gap-3 text-white">
                 <Ambulance className="h-4 w-4" />
-                <span className="font-semibold">Ambulance: 108 · Emergency: 24×7</span>
+                <span className="font-semibold">Emergency: +91 {hospitalInfo.emergency} · 24×7</span>
               </div>
             </div>
 
             <div className="mt-6 flex gap-2">
               {[Facebook, Instagram, Linkedin, Youtube, Twitter].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-background/80 hover:bg-white/10 hover:text-white"
-                >
+                <a key={i} href="#" aria-label="Social media" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-background/80 hover:bg-white/10 hover:text-white">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -125,9 +74,7 @@ export function SiteFooter() {
                 <h4 className="font-display text-sm font-semibold text-white">{c.title}</h4>
                 <ul className="mt-4 space-y-2.5 text-sm text-background/70">
                   {c.links.map((l) => (
-                    <li key={l}>
-                      <a href="#" className="hover:text-white">{l}</a>
-                    </li>
+                    <li key={l}><a href="/#contact" className="hover:text-white">{l}</a></li>
                   ))}
                 </ul>
               </div>
@@ -136,12 +83,8 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-background/60 sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} Sanjeevani ICU &amp; Hospital Group. All rights reserved. CIN: U85100DL2005PLC123456</span>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
-            <a href="#" className="hover:text-white">Accessibility</a>
-          </div>
+          <span>© {new Date().getFullYear()} {siteDetails.copyrightName}. All rights reserved.</span>
+          <span>Designed &amp; Developed by <a href={siteDetails.developedByUrl} target="_blank" rel="noreferrer" className="font-semibold text-white hover:underline">{siteDetails.developedBy}</a></span>
         </div>
       </div>
 
@@ -155,4 +98,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

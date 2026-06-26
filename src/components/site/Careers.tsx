@@ -1,10 +1,10 @@
 import { Briefcase, GraduationCap, HeartPulse, Users, ArrowRight } from "lucide-react";
 
 const openings = [
-  { role: "Consultant – Interventional Cardiology", city: "Mumbai", type: "Full-time" },
-  { role: "Senior ICU Nurse", city: "Delhi NCR", type: "Full-time" },
-  { role: "Clinical Pharmacist", city: "Bengaluru", type: "Full-time" },
-  { role: "Hospital Administrator", city: "Pune", type: "Full-time" },
+  { role: "ICU Nurse", city: "Jhansi", type: "Full-time" },
+  { role: "Reception / Front Desk", city: "Jhansi", type: "Full-time" },
+  { role: "Insurance Desk Executive", city: "Jhansi", type: "Full-time" },
+  { role: "Hospital Support Staff", city: "Jhansi", type: "Full-time" },
 ];
 
 export function CareersTeaser() {
@@ -27,10 +27,10 @@ export function CareersTeaser() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {[
-                { icon: GraduationCap, t: "Structured residency & DNB programs" },
-                { icon: HeartPulse, t: "Comprehensive family health cover" },
-                { icon: Users, t: "3,200+ colleagues across 12 hospitals" },
-                { icon: Briefcase, t: "Internal mobility across the network" },
+                { icon: GraduationCap, t: "Training and patient-care protocols" },
+                { icon: HeartPulse, t: "Supportive healthcare workplace" },
+                { icon: Users, t: "Work with experienced doctors" },
+                { icon: Briefcase, t: "Growth opportunities in Jhansi" },
               ].map(({ icon: Icon, t }) => (
                 <div key={t} className="flex items-start gap-3 text-sm text-foreground/85">
                   <span
