@@ -22,8 +22,8 @@ const slides = [
     chip: { icon: Activity, label: "3T MRI · 128 slice CT" },
   },
   {
-    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392747/office_bws8qc.mp4',
-    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392747/office_bws8qc.mp4',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
     eyebrow: "Centers of Excellence",
     title: "Specialist programs",
     titleAccent: "for every stage of life.",
