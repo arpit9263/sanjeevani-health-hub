@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@sanjeevaniicuhospital" },
-      { name: "keywords", content: "best hospital in Jhansi, ICU hospital in Jhansi, emergency hospital Jhansi, critical care hospital Jhansi, Sanjeevani ICU Hospital, multi specialty hospital Jhansi, cashless hospital Jhansi" },
+      { name: "keywords", content: "Sanjeevaniicuhospital,Sanjeevani ICU Hospital,Sanjeevani ICU & Hospital Jhansi, ICU hospital in Jhansi, emergency hospital Jhansi, critical care hospital Jhansi, Sanjeevani ICU Hospital, multi specialty hospital Jhansi, cashless hospital Jhansi" },
     ],
     links: [
       { rel: "icon", href: "/favicon.png" },
