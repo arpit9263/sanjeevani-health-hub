@@ -25,11 +25,8 @@ export const searchIndex: SearchEntry[] = [
 
   // Pages
   { title: "About Sanjeevani", desc: "Two decades of trusted care", href: "/about", category: "Page" },
-  { title: "Our Network", desc: "12 hospitals across 32 cities", href: "/network", category: "Page" },
   { title: "Leadership Team", desc: "Board, advisors and clinical heads", href: "/about#leadership", category: "Page" },
   { title: "Careers", desc: "Clinical and non-clinical opportunities", href: "/careers", category: "Page" },
-  { title: "Franchise Opportunity", desc: "Partner with Sanjeevani", href: "/network#franchise", category: "Page" },
-  { title: "International Patients", desc: "Visa, travel and care plans", href: "/network#international", category: "Page" },
   { title: "Insurance & TPA Network", desc: "80+ empanelled insurers", href: "/services#insurance", category: "Page" },
   { title: "Gallery", desc: "Hospital tour and patient stories", href: "/gallery", category: "Page" },
   { title: "Contact & Helpline", desc: "Book appointment, branch directory", href: "/contact", category: "Page" },

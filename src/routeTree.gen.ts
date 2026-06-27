@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpecialtiesRouteImport } from './routes/specialties'
 import { Route as ServicesRouteImport } from './routes/services'
-import { Route as NetworkRouteImport } from './routes/network'
 import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -27,11 +26,6 @@ const SpecialtiesRoute = SpecialtiesRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NetworkRoute = NetworkRouteImport.update({
-  id: '/network',
-  path: '/network',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeadershipRoute = LeadershipRouteImport.update({
@@ -72,7 +66,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/leadership': typeof LeadershipRoute
-  '/network': typeof NetworkRoute
   '/services': typeof ServicesRoute
   '/specialties': typeof SpecialtiesRoute
 }
@@ -83,7 +76,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/leadership': typeof LeadershipRoute
-  '/network': typeof NetworkRoute
   '/services': typeof ServicesRoute
   '/specialties': typeof SpecialtiesRoute
 }
@@ -95,7 +87,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/leadership': typeof LeadershipRoute
-  '/network': typeof NetworkRoute
   '/services': typeof ServicesRoute
   '/specialties': typeof SpecialtiesRoute
 }
@@ -108,7 +99,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/leadership'
-    | '/network'
     | '/services'
     | '/specialties'
   fileRoutesByTo: FileRoutesByTo
@@ -119,7 +109,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/leadership'
-    | '/network'
     | '/services'
     | '/specialties'
   id:
@@ -130,7 +119,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/leadership'
-    | '/network'
     | '/services'
     | '/specialties'
   fileRoutesById: FileRoutesById
@@ -142,7 +130,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   LeadershipRoute: typeof LeadershipRoute
-  NetworkRoute: typeof NetworkRoute
   ServicesRoute: typeof ServicesRoute
   SpecialtiesRoute: typeof SpecialtiesRoute
 }
@@ -161,13 +148,6 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/network': {
-      id: '/network'
-      path: '/network'
-      fullPath: '/network'
-      preLoaderRoute: typeof NetworkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leadership': {
@@ -222,7 +202,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   LeadershipRoute: LeadershipRoute,
-  NetworkRoute: NetworkRoute,
   ServicesRoute: ServicesRoute,
   SpecialtiesRoute: SpecialtiesRoute,
 }

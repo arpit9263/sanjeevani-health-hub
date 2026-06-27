@@ -111,7 +111,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-5">
             <Link to="/careers" className="hover:text-white">Careers</Link>
             <a href="/" className="hover:text-white">Newsroom</a>
-            <a href="/services#insurance" className="hover:text-white">Insurance</a>
+            <a href="/#insurance" className="hover:text-white">Insurance</a>
             <a href={telHref(hospitalInfo.emergency)} className="inline-flex items-center gap-1.5 font-semibold text-white">
               <Ambulance className="h-3.5 w-3.5" /> Emergency: +91 {hospitalInfo.emergency}
             </a>

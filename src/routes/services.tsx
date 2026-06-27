@@ -5,6 +5,8 @@ import { FloatingActions } from "@/components/site/FloatingActions";
 import { Services } from "@/components/site/Services";
 import { Contact } from "@/components/site/Contact";
 import { hospitalInfo } from "@/lib/siteData";
+import { PageShell } from "@/components/site/PageShell";
+import { CentersOfExcellence } from "@/components/site/CentersOfExcellence";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -19,23 +21,15 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
+
 function ServicesPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
-      <main>
-        <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/75">Sanjeevani ICU & Hospital</span>
-            <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold md:text-6xl">Patient services and hospital facilities in Jhansi</h1>
-            <p className="mt-5 max-w-2xl text-primary-foreground/80">{hospitalInfo.name} provides emergency help, ICU admission support, diagnostics, pharmacy, insurance guidance and appointment assistance for families.</p>
-          </div>
-        </section>
-        <Services />
-        <Contact />
-      </main>
-      <SiteFooter />
-      <FloatingActions />
-    </div>
+    <PageShell
+      eyebrow="Our Services"
+      title="Patient services and hospital facilities in Jhansi"
+      subtitle={`${hospitalInfo.name} provides emergency help, ICU admission support, diagnostics, pharmacy, insurance guidance and appointment assistance for families.`}
+    >
+      <Services />
+    </PageShell>
   );
 }
