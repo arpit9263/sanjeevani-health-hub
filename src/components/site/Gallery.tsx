@@ -33,7 +33,7 @@ const videoItems: MediaItem[] = [
     duration: "00:30",
     span: "lg:col-span-2",
     note: "Sample hospital walkthrough video. Replace with the real hospital video anytime.",
-    videoSrc: "/media/icu-walkthrough.mp4",
+    videoSrc: "https://res.cloudinary.com/dusq7ltk1/video/upload/v1782581044/0627_2_gnqv3n.mp4",
   },
   {
     type: "video",
@@ -42,7 +42,7 @@ const videoItems: MediaItem[] = [
     tag: "Video",
     duration: "00:25",
     note: "Sample front and reception tour. Replace with the real hospital video anytime.",
-    videoSrc: "/media/front-tour.mp4",
+    videoSrc: "https://res.cloudinary.com/dusq7ltk1/video/upload/v1782392237/entrance_ssqyso.mp4",
   },
 ];
 
@@ -173,11 +173,11 @@ export function Gallery({ mode = "home" }: GalleryProps) {
                   {isPlayable ? <PlayCircle className="h-3.5 w-3.5" /> : <ImageIcon className="h-3.5 w-3.5" />}
                   {item.tag}
                 </div>
-                {item.duration && (
+                {/* {item.duration && (
                   <div className="absolute right-4 top-4 rounded-full bg-black/45 px-3 py-1 text-xs font-bold text-white backdrop-blur">
                     {item.duration}
                   </div>
-                )}
+                )} */}
                 {isPlayable && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur transition group-hover:scale-110">

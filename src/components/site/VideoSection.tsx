@@ -50,7 +50,7 @@ export function VideoSection() {
               {playing ? (
                 <iframe
                   className="h-full w-full"
-                  src="https://www.youtube.com/embed/aXFSJTjVjw0?autoplay=1&rel=0"
+                  src="https://res.cloudinary.com/dusq7ltk1/video/upload/v1782581044/0627_2_gnqv3n.mp4"
                   title="Sanjeevani Hospital Story"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
