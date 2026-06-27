@@ -94,6 +94,17 @@ export const services = [
   { title: "Dentistry / Orthodontics", desc: "Dental and orthodontic care through specialist support." },
 ];
 
+export const hospitalServices = [
+  { title: "24×7 Emergency Help", desc: "Fast reception support for emergency cases, critical patients and urgent hospital admission guidance.", href: "/contact" },
+  { title: "ICU Admission Support", desc: "Bed, oxygen, monitor and ICU-related admission guidance for families during critical situations.", href: "/services#icu-admission" },
+  { title: "Diagnostics & Pathology", desc: "Pathology and diagnostic support for quicker clinical decisions and smoother treatment planning.", href: "/services#diagnostics" },
+  { title: "In-house Pharmacy", desc: "Medicine availability support inside the hospital so families do not need to run outside frequently.", href: "/services#pharmacy" },
+  { title: "Cashless Insurance / TPA", desc: "Ayushman, insurance and TPA desk guidance for eligible patients and cashless processing support.", href: "/services#insurance" },
+  { title: "OPD Appointment Booking", desc: "Reception and WhatsApp-based appointment help for specialist consultation and follow-up visits.", href: "/contact" },
+  { title: "Family Counselling", desc: "Clear patient updates, treatment guidance and family communication during admission and recovery.", href: "/services#family-counselling" },
+  { title: "Reports & Documentation", desc: "Support for reports, discharge summary, billing and medical documentation queries.", href: "/services#reports" },
+];
+
 export const trustChips = ["24×7 Emergency", "ICU Support", "Cashless Insurance", "49+ Beds", "15+ Doctors"];
 
 export const contactCards = [

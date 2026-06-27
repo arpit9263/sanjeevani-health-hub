@@ -26,7 +26,7 @@ export function InternationalPatients() {
               detail — so you can focus on healing.
             </p>
             <a
-              href="/#contact"
+              href="/contact"
               className="mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)]"
               style={{ backgroundImage: "var(--gradient-brand)" }}
             >

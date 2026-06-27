@@ -26,7 +26,7 @@ export function InsurancePartners() {
               Sanjeevani ICU & Hospital supports cashless and TPA processes through listed insurance partners, helping families reduce billing stress during treatment.
             </p>
             <a
-              href="#contact"
+              href="/contact"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-xl transition-transform hover:scale-[1.03]"
             >
               Check your insurer

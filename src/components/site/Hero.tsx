@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import heroImg from "@/assets/hospital-hero.jpg";
+import heroImg from "@/assets/hospital-hero.webp";
 
 import { ArrowRight, HeartPulse, Play, Pause, ShieldCheck, Stethoscope, Activity } from "lucide-react";
 
@@ -98,14 +98,14 @@ export function Hero() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#contact"
+              href="/contact"
               className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-xl transition-all hover:scale-[1.03] hover:shadow-2xl"
             >
               Book an Appointment
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#services"
+              href="/services"
               className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20"
             >
               Explore Specialties

@@ -41,7 +41,7 @@ export function Insights() {
             </h2>
           </div>
           <a
-            href="/#insights"
+            href="/"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline md:justify-self-end"
           >
             View all articles <ArrowRight className="h-4 w-4" />

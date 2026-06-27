@@ -16,7 +16,7 @@ export function FloatingActions() {
           <span className="absolute right-14 whitespace-nowrap rounded-full bg-foreground px-3 py-1 text-xs font-semibold text-background opacity-0 shadow transition-opacity group-hover:opacity-100">{label}</span>
         </a>
       ))}
-      <a href="#home" aria-label="Back to top" className="flex h-12 w-12 items-center justify-center rounded-full text-primary-foreground shadow-xl transition-transform hover:scale-110" style={{ backgroundImage: "var(--gradient-brand)" }}>
+      <a href="/" aria-label="Back to top" className="flex h-12 w-12 items-center justify-center rounded-full text-primary-foreground shadow-xl transition-transform hover:scale-110" style={{ backgroundImage: "var(--gradient-brand)" }}>
         <ArrowUp className="h-5 w-5" />
       </a>
     </div>

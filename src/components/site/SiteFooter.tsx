@@ -2,11 +2,32 @@ import { Logo } from "./Logo";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Youtube, Twitter, Ambulance } from "lucide-react";
 import { hospitalInfo, services, siteDetails, telHref } from "@/lib/siteData";
 
-const cols = [
-  { title: "Specialties", links: services.slice(0, 8).map((s) => s.title) },
-  { title: "Patient Care", links: ["Book Appointment", "Emergency Care", "Insurance & TPA", "ICU Support", "OPD Consultation", "Critical Care"] },
-  { title: "Hospital", links: ["About Us", "Leadership", "Careers", "Gallery", "Contact Us", "Patient Support"] },
-  { title: "Resources", links: ["Health Insights", "Patient Rights", "Privacy Policy", "Terms of Use", "Sitemap", "Feedback"] },
+const cols: { title: string; links: { label: string; href: string }[] }[] = [
+  { title: "Specialities", links: services.slice(0, 8).map((s) => ({ label: s.title, href: "/specialties" })) },
+  { title: "Patient Care", links: [
+    { label: "Book Appointment", href: "/contact" },
+    { label: "Emergency Care", href: `tel:+91${hospitalInfo.emergency}` },
+    { label: "Insurance & TPA", href: "/services#insurance" },
+    { label: "ICU Support", href: "/specialties#icu" },
+    { label: "OPD Consultation", href: "/contact" },
+    { label: "Critical Care", href: "/specialties#icu" },
+  ] },
+  { title: "Hospital", links: [
+    { label: "About Us", href: "/about" },
+    { label: "Doctors & Owners", href: "/about#leadership" },
+    { label: "Careers", href: "/careers" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "Patient Support", href: "/contact" },
+  ] },
+  { title: "Resources", links: [
+    { label: "Health Insights", href: "/" },
+    { label: "Patient Rights", href: "/contact" },
+    { label: "Privacy Policy", href: "/contact" },
+    { label: "Terms of Use", href: "/contact" },
+    { label: "Sitemap", href: "/sitemap.xml" },
+    { label: "Feedback", href: "/contact" },
+  ] },
 ];
 
 export function SiteFooter() {
@@ -60,8 +81,14 @@ export function SiteFooter() {
             </div>
 
             <div className="mt-6 flex gap-2">
-              {[Facebook, Instagram, Linkedin, Youtube, Twitter].map((Icon, i) => (
-                <a key={i} href="#" aria-label="Social media" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-background/80 hover:bg-white/10 hover:text-white">
+              {[
+                { Icon: Facebook, href: hospitalInfo.instagram },
+                { Icon: Instagram, href: hospitalInfo.instagram },
+                { Icon: Linkedin, href: siteDetails.developedByUrl },
+                { Icon: Youtube, href: hospitalInfo.instagram },
+                { Icon: Twitter, href: hospitalInfo.instagram },
+              ].map(({ Icon, href }, i) => (
+                <a key={i} href={href} target="_blank" rel="noreferrer" aria-label="Social media" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-background/80 hover:bg-white/10 hover:text-white">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -74,7 +101,7 @@ export function SiteFooter() {
                 <h4 className="font-display text-sm font-semibold text-white">{c.title}</h4>
                 <ul className="mt-4 space-y-2.5 text-sm text-background/70">
                   {c.links.map((l) => (
-                    <li key={l}><a href="/#contact" className="hover:text-white">{l}</a></li>
+                    <li key={l.label}><a href={l.href} className="hover:text-white">{l.label}</a></li>
                   ))}
                 </ul>
               </div>

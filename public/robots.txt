@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Important public pages
+Allow: /about
+Allow: /services
+Allow: /specialties
+Allow: /gallery
+Allow: /contact
+
+Sitemap: https://sanjeevaniicuhospital.com/sitemap.xml

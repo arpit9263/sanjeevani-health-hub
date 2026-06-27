@@ -19,7 +19,7 @@ export function CallToCare() {
             Our reception team helps you connect with the right specialist, book an appointment, understand insurance support and reach emergency care when needed.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-xl transition-transform hover:scale-[1.03]">
+            <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-xl transition-transform hover:scale-[1.03]">
               <CalendarCheck className="h-4 w-4" /> Book Appointment <ArrowRight className="h-4 w-4" />
             </a>
             <a href={telHref(hospitalInfo.reception)} className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/20">

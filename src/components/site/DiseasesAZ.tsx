@@ -165,7 +165,7 @@ export function DiseasesAZ() {
             {filtered.map((name, idx) => (
               <a
                 key={name}
-                href="#contact"
+                href="/contact"
                 className="group relative overflow-hidden rounded-xl border border-border bg-background p-4 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[var(--shadow-card)] animate-rise-in"
                 style={{ animationDelay: `${idx * 30}ms` }}
               >

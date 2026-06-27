@@ -77,16 +77,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Sanjeevani ICU & Hospital Jhansi" },
+      { name: "description", content: "Sanjeevani ICU & Hospital in Jhansi offers 24×7 emergency care, ICU support, specialist doctors, cashless insurance and multi-specialty treatment." },
+      { name: "author", content: "Sanjeevani ICU & Hospital" },
+      { property: "og:title", content: "Sanjeevani ICU & Hospital Jhansi" },
+      { property: "og:description", content: "24×7 emergency, ICU care, 49+ beds and specialist doctors in Jhansi." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@sanjeevaniicuhospital" },
+      { name: "keywords", content: "best hospital in Jhansi, ICU hospital in Jhansi, emergency hospital Jhansi, critical care hospital Jhansi, Sanjeevani ICU Hospital, multi specialty hospital Jhansi, cashless hospital Jhansi" },
     ],
     links: [
+      { rel: "icon", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       {
         rel: "stylesheet",
         href: appCss,
@@ -113,11 +116,32 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function ScrollRevealEffects() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const nodes = Array.from(document.querySelectorAll("main section"));
+    nodes.forEach((node) => node.classList.add("scroll-reveal"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("scroll-reveal-visible");
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollRevealEffects />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

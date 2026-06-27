@@ -4,12 +4,10 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { Services } from "@/components/site/Services";
 import { About } from "@/components/site/About";
 import { Stats } from "@/components/site/Stats";
-import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CentersOfExcellence } from "@/components/site/CentersOfExcellence";
 import { PatientJourney } from "@/components/site/PatientJourney";
 import { InsurancePartners } from "@/components/site/InsurancePartners";
-import { Leadership } from "@/components/site/Leadership";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Insights } from "@/components/site/Insights";
 import { CareersTeaser } from "@/components/site/Careers";
@@ -20,6 +18,7 @@ import { Gallery } from "@/components/site/Gallery";
 import { VideoSection } from "@/components/site/VideoSection";
 import { CallToCare } from "@/components/site/CallToCare";
 import { FloatingActions } from "@/components/site/FloatingActions";
+import { Contact } from "@/components/site/Contact";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
@@ -59,7 +58,6 @@ function Index() {
 
            {/* 7. About / leadership */}
         <About />
-
         {/* 2. Proof / scale */}
         <Stats />
 
@@ -86,13 +84,15 @@ function Index() {
         {/* 9. Urgent banner before secondary content */}
         <EmergencyBanner />
 
-        {/* 10. Wider organisation */}
+        {/* 10. Contact / conversion */}
+        <Contact />
+
+        {/* 11. Wider organisation */}
         <Insights />
         <CareersTeaser />
 
-        {/* 11. FAQ + contact */}
+        {/* 12. FAQ */}
         <FAQ />
-        <Contact />
       </main>
       <SiteFooter />
       <FloatingActions />

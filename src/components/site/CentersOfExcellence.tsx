@@ -15,21 +15,21 @@ import {
 } from "lucide-react";
 
 const centers = [
-  { icon: Activity, title: "ICU & Critical Care", points: ["24×7 ICU support", "Ventilator & oxygen support", "Continuous monitoring"], color: "#0891B2", bg: "from-cyan-50 via-white to-white" },
-  { icon: Stethoscope, title: "Anaesthesia", points: ["Pre-operative assessment", "Safe procedure support", "Critical care expertise"], color: "#0E9F6E", bg: "from-emerald-50 via-white to-white" },
-  { icon: Bone, title: "Orthopedics", points: ["Fracture & joint care", "Injury management", "Specialist consultation"], color: "#2563EB", bg: "from-blue-50 via-white to-white" },
-  { icon: Heart, title: "Cardiology", points: ["Heart consultation", "Emergency support", "Monitoring & referral guidance"], color: "#DB2777", bg: "from-pink-50 via-white to-white" },
-  { icon: Brain, title: "Neurosurgery", points: ["Neuro & spine care", "Specialist surgical guidance", "Emergency evaluation"], color: "#7C3AED", bg: "from-violet-50 via-white to-white" },
-  { icon: Microscope, title: "Diagnostics", points: ["Pathology support", "X-ray facility", "Faster clinical decisions"], color: "#D97706", bg: "from-amber-50 via-white to-white" },
-  { icon: Baby, title: "OBS & Gynecology", points: ["Women’s health", "Pregnancy consultation", "Specialist support"], color: "#0EA5E9", bg: "from-sky-50 via-white to-white" },
-  { icon: Eye, title: "Pharmacy & Insurance", points: ["In-house medicines", "Ayushman support", "Cashless/TPA guidance"], color: "#059669", bg: "from-teal-50 via-white to-white" },
+  { id: "icu", icon: Activity, title: "ICU & Critical Care", points: ["24×7 ICU support", "Ventilator & oxygen support", "Continuous monitoring"], color: "#0891B2", bg: "from-cyan-50 via-white to-white" },
+  { id: "anaesthesia", icon: Stethoscope, title: "Anaesthesia", points: ["Pre-operative assessment", "Safe procedure support", "Critical care expertise"], color: "#0E9F6E", bg: "from-emerald-50 via-white to-white" },
+  { id: "orthopedics", icon: Bone, title: "Orthopedics", points: ["Fracture & joint care", "Injury management", "Specialist consultation"], color: "#2563EB", bg: "from-blue-50 via-white to-white" },
+  { id: "cardiology", icon: Heart, title: "Cardiology", points: ["Heart consultation", "Emergency support", "Monitoring & referral guidance"], color: "#DB2777", bg: "from-pink-50 via-white to-white" },
+  { id: "neurosurgery", icon: Brain, title: "Neurosurgery", points: ["Neuro & spine care", "Specialist surgical guidance", "Emergency evaluation"], color: "#7C3AED", bg: "from-violet-50 via-white to-white" },
+  { id: "diagnostics", icon: Microscope, title: "Diagnostics", points: ["Pathology support", "X-ray facility", "Faster clinical decisions"], color: "#D97706", bg: "from-amber-50 via-white to-white" },
+  { id: "gynecology", icon: Baby, title: "OBS & Gynecology", points: ["Women’s health", "Pregnancy consultation", "Specialist support"], color: "#0EA5E9", bg: "from-sky-50 via-white to-white" },
+  { id: "insurance", icon: Eye, title: "Pharmacy & Insurance", points: ["In-house medicines", "Ayushman support", "Cashless/TPA guidance"], color: "#059669", bg: "from-teal-50 via-white to-white" },
 ];
 
 const trustItems = [
   {
     icon: ShieldCheck,
-    title: "World-class Infrastructure",
-    text: "Advanced technology and patient-first safety.",
+    title: "Speciality-led Care",
+    text: "Clinical departments with focused doctor guidance.",
   },
   {
     icon: Users,
@@ -59,24 +59,25 @@ export function CentersOfExcellence() {
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-emerald-700 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            Core Hospital Services
+            Clinical Specialities
           </div>
 
           <h2 className="mt-5 font-display text-4xl font-bold leading-[1.05] text-slate-950 md:text-6xl">
-            Advanced clinical care,
+            Specialist departments,
             <span className="block bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
-              designed around patients
+              guided by doctors
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">
-            Real hospital services supported by experienced doctors, ICU infrastructure, diagnostics, pharmacy and emergency readiness.
+            Speciality page now focuses only on clinical departments and doctors. Hospital facilities like pharmacy, insurance and diagnostics are available under Services.
           </p>
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {centers.map(({ icon: Icon, title, points, color, bg }, index) => (
+          {centers.map(({ id, icon: Icon, title, points, color, bg }, index) => (
             <article
+              id={id}
               key={title}
               className={`group relative flex min-h-[280px] flex-col overflow-hidden rounded-[1.75rem] border border-white bg-gradient-to-br ${bg} p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(15,23,42,0.14)]`}
             >
@@ -116,11 +117,11 @@ export function CentersOfExcellence() {
               </ul>
 
               <a
-                href="/specialties"
+                href={`/specialties#${id}`}
                 className="relative mt-auto inline-flex w-fit items-center gap-2 pt-6 text-sm font-bold transition-all group-hover:gap-3"
                 style={{ color }}
               >
-                Explore Center
+                View Speciality
                 <ArrowRight className="h-4 w-4" />
               </a>
             </article>

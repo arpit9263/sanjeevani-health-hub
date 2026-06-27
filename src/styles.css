@@ -171,3 +171,37 @@
     letter-spacing: -0.02em;
   }
 }
+
+@layer utilities {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(34px) scale(0.985);
+    transition: opacity 760ms cubic-bezier(.2,.7,.2,1), transform 760ms cubic-bezier(.2,.7,.2,1);
+  }
+  .scroll-reveal-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .polished-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklab, var(--border) 82%, white);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, white), var(--card));
+    box-shadow: var(--shadow-card);
+  }
+  .polished-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 34%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

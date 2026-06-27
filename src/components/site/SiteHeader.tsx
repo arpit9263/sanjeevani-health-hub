@@ -22,29 +22,37 @@ const nav: { label: string; href: string; children?: { label: string; href: stri
     label: "About",
     href: "/about",
     children: [
-      { label: "Our Story", href: "/about", desc: "Serving Jhansi since 2019" },
-      { label: "Vision & Mission", href: "/about#mission", desc: "Why we exist" },
-      { label: "CSR & Community", href: "/about#csr", desc: "Health camps and outreach" },
+      { label: "About Hospital", href: "/about", desc: "Story, mission and hospital profile" },
+      { label: "Doctors & Owners", href: "/about#leadership", desc: "Leadership and specialist consultants" },
+      { label: "Vision & Mission", href: "/about#mission", desc: "Patient-first care values" },
     ],
   },
   {
-    label: "Specialties",
+    label: "Speciality",
     href: "/specialties",
     children: [
-      { label: "Critical Care & ICU", href: "/specialties#icu" },
-      { label: "Anaesthesia", href: "/specialties#anaesthesia" },
-      { label: "Orthopedics", href: "/specialties#orthopedics" },
-      { label: "Cardiology", href: "/specialties#cardiology" },
-      { label: "Urology", href: "/specialties#urology" },
-      { label: "Neurosurgery", href: "/specialties#neurosurgery" },
-      { label: "OBS & Gynecology", href: "/specialties#gynecology" },
+      { label: "Critical Care & ICU", href: "/specialties#icu", desc: "Doctor-led critical care department" },
+      { label: "Anaesthesia", href: "/specialties#anaesthesia", desc: "Safe procedure and critical care support" },
+      { label: "Orthopedics", href: "/specialties#orthopedics", desc: "Bones, joints and injury care" },
+      { label: "Cardiology", href: "/specialties#cardiology", desc: "Heart specialist consultation" },
+      { label: "Urology", href: "/specialties#urology", desc: "Kidney and urinary care" },
+      { label: "Neurosurgery", href: "/specialties#neurosurgery", desc: "Brain, nerve and spine support" },
+      { label: "OBS & Gynecology", href: "/specialties#gynecology", desc: "Women’s health and pregnancy care" },
     ],
   },
-  // { label: "Conditions A–Z", href: "/#diseases" },
-  { label: "Leadership", href: "/leadership" },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Emergency Help", href: "/services", desc: "24×7 admission and urgent support" },
+      { label: "Diagnostics & Pharmacy", href: "/services#diagnostics", desc: "Pathology, reports and medicines" },
+      { label: "Insurance / TPA", href: "/services#insurance", desc: "Cashless and Ayushman guidance" },
+      { label: "Appointment Booking", href: "/contact", desc: "OPD and consultation enquiry" },
+    ],
+  },
+  { label: "Gallery", href: "/gallery" },
   { label: "Careers", href: "/careers" },
-  // { label: "Gallery", href: "/#gallery" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function SiteHeader() {
@@ -102,8 +110,8 @@ export function SiteHeader() {
           </div>
           <div className="flex items-center gap-5">
             <Link to="/careers" className="hover:text-white">Careers</Link>
-            <a href="/#insights" className="hover:text-white">Newsroom</a>
-            <a href="/#insurance" className="hover:text-white">Insurance</a>
+            <a href="/" className="hover:text-white">Newsroom</a>
+            <a href="/services#insurance" className="hover:text-white">Insurance</a>
             <a href={telHref(hospitalInfo.emergency)} className="inline-flex items-center gap-1.5 font-semibold text-white">
               <Ambulance className="h-3.5 w-3.5" /> Emergency: +91 {hospitalInfo.emergency}
             </a>
@@ -186,7 +194,7 @@ export function SiteHeader() {
               <kbd className="hidden lg:inline rounded bg-background px-1.5 py-0.5 text-[10px] text-muted-foreground">⌘K</kbd>
             </button> */}
             <a
-              href="/#contact"
+              href="/contact"
               className="hidden lg:inline-flex items-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/5"
             >
               <CalendarCheck className="h-4 w-4" />
