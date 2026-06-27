@@ -3,7 +3,7 @@ import doctorConsultation from "@/assets/hospital/doctor-consultation.jpg";
 import waitingHall from "@/assets/hospital/waiting-hall.jpg";
 import doctorPatientIcu from "@/assets/hospital/doctor-patient-icu.jpg";
 import familyConsultation from "@/assets/hospital/family-consultation.jpg";
-import frontBuilding from "@/assets/hospital/front-building.jpg";
+import frontBuilding from "@/assets/hospital/front-building.png";
 import headOffice from "@/assets/hospital/head-office.jpg";
 import icuWard from "@/assets/hospital/icu-ward.jpg";
 import icuCare from "@/assets/hospital/icu-care.jpg";
