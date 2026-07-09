@@ -7,7 +7,7 @@ export const hospitalInfo = {
   reception: "8353933203",
   emergency: "8353933203",
   whatsapp: "8353933203",
-  email: "Info@sanjeevani@gmail.com",
+  email: "Info@sanjeevaniicuhospital.com",
   instagram: "https://www.instagram.com/sanjeevaniicuhospital?igsh=Y2dtZmVxODEzeWhq",
   mapEmbedUrl: "https://www.openstreetmap.org/export/embed.html?bbox=78.50%2C25.39%2C78.62%2C25.48&layer=mapnik",
   mapLink: "https://maps.google.com/?q=J.P.+Heights,+Near+Court+Yard+Apartment,+Shivaji+Nagar,+Kanpur+Road,+Jhansi",
