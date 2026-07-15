@@ -4,27 +4,68 @@ import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 
 const iconMap = [Ambulance, Phone, MessageCircle, AtSign];
+const formspreeContactId = import.meta.env.VITE_FORMSPREE_CONTACT_FORM_ID?.trim();
+const formspreeContactUrl = formspreeContactId ? `https://formspree.io/f/${formspreeContactId}` : undefined;
+
+const emptyForm = { name: "", phone: "", email: "", department: "", message: "" };
+type FormState = typeof emptyForm;
+type SubmissionState = "idle" | "submitting" | "success" | "error";
 
 export function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", department: "", message: "" });
-  const update = (key: keyof typeof form) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+  const [form, setForm] = useState<FormState>(emptyForm);
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+
+  const update = (key: keyof FormState) => (e: ChangeEvent<HTMLInputElement>) =>
     setForm((prev) => ({ ...prev, [key]: e.target.value }));
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const updateMessage = (e: ChangeEvent<HTMLTextAreaElement>) =>
+    setForm((prev) => ({ ...prev, message: e.target.value }));
+
+  const resetForm = () => setForm(emptyForm);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const message = [
-      `New appointment/callback request for ${hospitalInfo.name}`,
+      `New appointment / callback request for ${hospitalInfo.name}`,
       "",
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
+      `Name: ${form.name || "Not provided"}`,
+      `Phone: ${form.phone || "Not provided"}`,
       `Email: ${form.email || "Not provided"}`,
       `Department: ${form.department || "General"}`,
-      `Message: ${form.message}`,
+      `Message: ${form.message || "Not provided"}`,
       "",
-      "Source: Website",
+      `Source: Website Contact Form`,
     ].join("\n");
-    window.open(`https://wa.me/91${hospitalInfo.whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+
+    if (!formspreeContactUrl) {
+      window.open(`https://wa.me/91${hospitalInfo.whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      setSubmissionState("success");
+      resetForm();
+      return;
+    }
+
+    setSubmissionState("submitting");
+
+    try {
+      const response = await fetch(formspreeContactUrl, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(e.currentTarget),
+      });
+
+      if (response.ok) {
+        setSubmissionState("success");
+        resetForm();
+      } else {
+        setSubmissionState("error");
+      }
+    } catch {
+      setSubmissionState("error");
+    }
   };
+
+  const buttonLabel = submissionState === "submitting" ? "Sending..." : formspreeContactUrl ? "Send message" : "Send on WhatsApp";
 
   return (
     <section id="contact" className="py-20 md:py-28" style={{ backgroundImage: "var(--gradient-soft)" }}>
@@ -54,17 +95,21 @@ export function Contact() {
           <div className="space-y-6">
             <form onSubmit={handleSubmit} className="rounded-3xl border border-border bg-card p-8" style={{ boxShadow: "var(--shadow-card)" }}>
               <h3 className="font-display text-xl font-semibold text-foreground">Request a callback</h3>
-              <p className="mt-1 text-sm text-muted-foreground">Submit करने पर WhatsApp खुलेगा और आपकी details auto-filled message में आ जाएंगी.</p>
+              <p className="mt-1 text-sm text-muted-foreground">{formspreeContactUrl ? "Your request will be stored securely in Formspree once the form ID is configured." : "Submit करने पर WhatsApp खुलेगा और आपकी details auto-filled message में आ जाएंगी."}</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <Field label="Full name" type="text" placeholder="Your name" value={form.name} onChange={update("name")} />
-                <Field label="Phone number" type="tel" placeholder="+91" value={form.phone} onChange={update("phone")} />
-                <Field label="Email" type="email" placeholder="you@example.com" value={form.email} onChange={update("email")} required={false} />
-                <Field label="Department" type="text" placeholder="e.g. ICU, Cardiology" value={form.department} onChange={update("department")} required={false} />
+                <Field label="Full name" type="text" placeholder="Your name" value={form.name} onChange={update("name")} name="name" />
+                <Field label="Phone number" type="tel" placeholder="+91" value={form.phone} onChange={update("phone")} name="phone" />
+                <Field label="Email" type="email" placeholder="you@example.com" value={form.email} onChange={update("email")} required={false} name="email" />
+                <Field label="Department" type="text" placeholder="e.g. ICU, Cardiology" value={form.department} onChange={update("department")} required={false} name="department" />
                 <label className="block sm:col-span-2">
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Message</span>
-                  <textarea rows={4} required value={form.message} onChange={update("message")} placeholder="How can we help you?" className="mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                  <textarea rows={4} required value={form.message} onChange={updateMessage} name="message" placeholder="How can we help you?" className="mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
                 </label>
-                <button type="submit" className="sm:col-span-2 mt-2 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02]" style={{ backgroundImage: "var(--gradient-brand)" }}>Send on WhatsApp</button>
+                <input type="hidden" name="source" value="website-contact-form" />
+                <input type="hidden" name="_subject" value={`New enquiry from ${hospitalInfo.name}`} />
+                <button type="submit" disabled={submissionState === "submitting"} className="sm:col-span-2 mt-2 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70" style={{ backgroundImage: "var(--gradient-brand)" }}>{buttonLabel}</button>
+                {submissionState === "success" && <p className="sm:col-span-2 text-sm font-medium text-emerald-600">Thanks! Your request was received successfully.</p>}
+                {submissionState === "error" && <p className="sm:col-span-2 text-sm font-medium text-destructive">The request could not be delivered right now. Please call or use WhatsApp instead.</p>}
               </div>
             </form>
 
@@ -90,11 +135,11 @@ export function Contact() {
   );
 }
 
-function Field({ label, type, placeholder, value, onChange, required = true }: { label: string; type: string; placeholder: string; value: string; onChange: (e: ChangeEvent<HTMLInputElement>) => void; required?: boolean }) {
+function Field({ label, type, placeholder, value, onChange, required = true, name }: { label: string; type: string; placeholder: string; value: string; onChange: (e: ChangeEvent<HTMLInputElement>) => void; required?: boolean; name: string }) {
   return (
     <label className="block">
       <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
-      <input type={type} required={required} value={value} onChange={onChange} placeholder={placeholder} className="mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+      <input type={type} required={required} value={value} onChange={onChange} name={name} placeholder={placeholder} className="mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
     </label>
   );
 }
