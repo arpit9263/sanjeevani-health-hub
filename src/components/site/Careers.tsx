@@ -1,3 +1,4 @@
+import { hospitalInfo } from "@/lib/siteData";
 import { Briefcase, GraduationCap, HeartPulse, Users, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
@@ -40,7 +41,7 @@ export function CareersTeaser() {
     ].join("\n");
 
     if (!careersFormUrl) {
-      window.open(`https://wa.me/91${"7000000000"}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      window.open(`https://wa.me/91${hospitalInfo.whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
       setSubmissionState("success");
       resetForm();
       return;
