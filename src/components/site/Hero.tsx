@@ -111,10 +111,10 @@ export function Hero() {
               Explore Specialties
             </a>
             <a
-              href="tel:108"
+              href="tel:8353933203"
               className="inline-flex items-center gap-2 rounded-full bg-destructive/90 px-6 py-3 text-sm font-semibold text-white shadow-xl backdrop-blur hover:bg-destructive"
             >
-              <HeartPulse className="h-4 w-4 animate-slow-pulse" /> Emergency · 108
+              <HeartPulse className="h-4 w-4 animate-slow-pulse" /> Emergency
             </a>
           </div>
 

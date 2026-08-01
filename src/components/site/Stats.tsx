@@ -5,7 +5,7 @@ import { stats } from "@/lib/siteData";
 const statMeta = [
   { end: 15, suffix: "+", icon: Stethoscope },
   { end: 49, suffix: "+", icon: BedDouble },
-  { end: 3, suffix: " Lakh+", icon: Activity },
+  { end: 99, suffix: " K+", icon: Activity },
   { end: 2019, suffix: "", icon: CalendarDays },
 ];
 

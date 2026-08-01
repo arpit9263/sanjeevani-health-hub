@@ -18,7 +18,10 @@ export function About() {
             Real hospital care in the heart of Jhansi.
           </h2>
           <p className="mt-4 text-muted-foreground">
-            {hospitalInfo.name} was established in {hospitalInfo.established} to make dependable ICU, emergency and multi-specialty care accessible for families in Jhansi. The hospital combines specialist doctors, trained nursing care, ICU infrastructure and family-first communication.
+            {hospitalInfo.name} was established in {hospitalInfo.established} to make dependable ICU, emergency and multi-specialty care accessible for families in Jhansi. The hospital combines specialist doctors with team of{' '}
+            <span className="font-semibold text-foreground">Dr. Shubhdeep M.W. Richi</span>,{' '}
+            <span className="font-semibold text-foreground">Dr. Mandeep M.H. Madia</span>,{' '}
+            <span className="font-semibold text-foreground">Dr. Shreya Sharma</span>, trained nursing care, ICU infrastructure and family-first communication.
           </p>
 
           <ul className="mt-8 space-y-3">

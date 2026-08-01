@@ -30,7 +30,7 @@ export const siteDetails = {
 export const stats = [
   { value: "15+", label: "Doctors", detail: "Experienced specialists and consultants" },
   { value: "49+", label: "Beds", detail: "ICU and hospital care capacity" },
-  { value: "3 Lakh+", label: "Patients Treated", detail: "Trusted by families across Jhansi" },
+  { value: "99 K+", label: "Patients Treated", detail: "Trusted by families across Jhansi" },
   { value: "2019", label: "Established", detail: "Serving with dedication since 2019" },
 ];
 

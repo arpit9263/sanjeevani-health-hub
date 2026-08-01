@@ -21,7 +21,7 @@ export const searchIndex: SearchEntry[] = [
   { title: "Tele-consultation", desc: "Online doctor consultations", href: "/contact", category: "Service" },
   { title: "Health Packages", desc: "Preventive health check-ups", href: "/services", category: "Service" },
   { title: "Home Care", desc: "Nursing and physio at home", href: "/services", category: "Service" },
-  { title: "Ambulance: 108", desc: "Round-the-clock ambulance service", href: "tel:108", category: "Emergency" },
+  { title: "Ambulance: 8353933203", desc: "Round-the-clock ambulance service", href: "tel:8353933203", category: "Emergency" },
 
   // Pages
   { title: "About Sanjeevani", desc: "Two decades of trusted care", href: "/about", category: "Page" },

@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "15+ doctors · 49+ beds · 3 Lakh+ patients treated · 24×7 emergency and ICU care.",
+          "15+ doctors · 49+ beds · 99 K+ patients treated · 24×7 emergency and ICU care.",
       },
     ],
   }),

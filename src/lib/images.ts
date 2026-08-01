@@ -4,7 +4,7 @@ import waitingHall from "@/assets/hospital/waiting-hall.webp";
 import doctorPatientIcu from "@/assets/hospital/doctor-patient-icu.webp";
 import familyConsultation from "@/assets/hospital/family-consultation.webp";
 import frontBuilding from "@/assets/hospital/front-building.webp";
-import headOffice from "@/assets/hospital/head-office.webp";
+import headOffice from "@/assets/hospital/head-office.png";
 import icuWard from "@/assets/hospital/icu-ward.webp";
 import icuCare from "@/assets/hospital/icu-care.webp";
 import pharmacy from "@/assets/hospital/pharmacy.webp";
@@ -54,14 +54,14 @@ export const hospitalImages = {
 };
 
 export const galleryImages = [
-  { src: icuWard, label: "ICU & critical care ward", tag: "Critical Care", span: "lg:col-span-2 lg:row-span-2" },
+  { src: icuWard, label: "High Dependency Unit (HDU) Care ward", tag: "Critical Care", span: "lg:col-span-2 lg:row-span-2" },
   { src: operationTheatre, label: "Modern operation theatre", tag: "Surgery" },
   { src: doctorPatientIcu, label: "Doctor beside patient", tag: "Patient Care" },
   { src: familyConsultation, label: "Family consultation", tag: "Counselling" },
   { src: nurseStation, label: "Nursing care", tag: "Care Team" },
   { src: waitingHall, label: "Patient waiting lounge", tag: "Comfort", span: "lg:col-span-2" },
   { src: pharmacy, label: "In-house pharmacy", tag: "Pharmacy" },
-  { src: pathology, label: "Pathology & diagnostics", tag: "Diagnostics" },
+  // { src: pathology, label: "Pathology & diagnostics", tag: "Diagnostics" },
   { src: oxygenSupport, label: "Oxygen and monitoring support", tag: "ICU Support" },
   { src: frontBuilding, label: "Hospital front view", tag: "Location", span: "lg:col-span-2" },
   { src: headOffice, label: "Consultation office", tag: "Doctors" },
