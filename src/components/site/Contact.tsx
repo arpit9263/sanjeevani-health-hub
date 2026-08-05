@@ -14,6 +14,7 @@ type SubmissionState = "idle" | "submitting" | "success" | "error";
 export function Contact() {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+  const [errorDetail, setErrorDetail] = useState<string | null>(null);
 
   const update = (key: keyof FormState) => (e: ChangeEvent<HTMLInputElement>) =>
     setForm((prev) => ({ ...prev, [key]: e.target.value }));
@@ -46,6 +47,7 @@ export function Contact() {
     }
 
     setSubmissionState("submitting");
+    setErrorDetail(null);
 
     try {
       const response = await fetch(formspreeContactUrl, {
@@ -58,9 +60,18 @@ export function Contact() {
         setSubmissionState("success");
         resetForm();
       } else {
+        // Surface Formspree's own error message (e.g. form not confirmed yet,
+        // domain not verified) instead of a silent generic failure — check the
+        // browser console / this message for the exact reason if this ever fires.
+        const data = await response.json().catch(() => null);
+        const reason = data?.errors?.[0]?.message || data?.error || `HTTP ${response.status}`;
+        console.error("Formspree submission failed:", reason);
+        setErrorDetail(reason);
         setSubmissionState("error");
       }
-    } catch {
+    } catch (err) {
+      console.error("Formspree request could not be sent:", err);
+      setErrorDetail("Network error — the request could not reach Formspree.");
       setSubmissionState("error");
     }
   };
@@ -109,7 +120,11 @@ export function Contact() {
                 <input type="hidden" name="_subject" value={`New enquiry from ${hospitalInfo.name}`} />
                 <button type="submit" disabled={submissionState === "submitting"} className="sm:col-span-2 mt-2 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70" style={{ backgroundImage: "var(--gradient-brand)" }}>{buttonLabel}</button>
                 {submissionState === "success" && <p className="sm:col-span-2 text-sm font-medium text-emerald-600">Thanks! Your request was received successfully.</p>}
-                {submissionState === "error" && <p className="sm:col-span-2 text-sm font-medium text-destructive">The request could not be delivered right now. Please call or use WhatsApp instead.</p>}
+                {submissionState === "error" && (
+                  <p className="sm:col-span-2 text-sm font-medium text-destructive">
+                    The request could not be delivered right now{errorDetail ? ` (${errorDetail})` : ""}. Please call or use WhatsApp instead.
+                  </p>
+                )}
               </div>
             </form>
 

@@ -1,10 +1,41 @@
 import { Play, ShieldCheck, HeartPulse, Users } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { hospitalImages } from "@/lib/images";
+
+// TODO: replace with the real "A day at Sanjeevani" brand film once it's ready.
+// Everything below (banner preview + duration badge) is driven off this one
+// file, so swapping this link is the only change needed.
+const storyVideoSrc = "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/hospitalvideo.mp4";
+
+function formatDuration(totalSeconds: number) {
+  if (!Number.isFinite(totalSeconds) || totalSeconds <= 0) return null;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = Math.round(totalSeconds % 60);
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
 
 export function VideoSection() {
   const [playing, setPlaying] = useState(false);
+  const [duration, setDuration] = useState<string | null>(null);
+  const previewRef = useRef<HTMLVideoElement | null>(null);
   const poster = hospitalImages.icuRound;
+
+  // Read the video's real timeline instead of showing a hard-coded duration.
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const onLoaded = () => setDuration(formatDuration(el.duration));
+    el.addEventListener("loadedmetadata", onLoaded);
+    return () => el.removeEventListener("loadedmetadata", onLoaded);
+  }, []);
+
+  // Pause the muted preview loop once the full video takes over, and vice versa.
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    if (playing) el.pause();
+    else el.play().catch(() => {});
+  }, [playing]);
 
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
@@ -47,22 +78,44 @@ export function VideoSection() {
               className="relative aspect-video overflow-hidden rounded-3xl border border-border"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
+              {/*
+                The banner itself is the real video — muted, looping, always
+                playing underneath — instead of a static dummy image. It stays
+                mounted even after play starts so we don't reload the file.
+              */}
+              <video
+                ref={previewRef}
+                src={storyVideoSrc}
+                poster={poster}
+                muted
+                loop
+                autoPlay
+                playsInline
+                preload="metadata"
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  playing ? "opacity-0" : "opacity-100"
+                }`}
+              />
+
               {playing ? (
-                <iframe
-                  className="h-full w-full"
-                  src="https://res.cloudinary.com/dusq7ltk1/video/upload/v1782581044/0627_2_gnqv3n.mp4"
-                  title="Sanjeevani Hospital Story"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <video
+                  key={storyVideoSrc}
+                  src={storyVideoSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  poster={poster}
+                  className="absolute inset-0 h-full w-full rounded-3xl bg-black object-contain outline-none"
+                >
+                  Your browser does not support the video tag.
+                </video>
               ) : (
                 <button
                   type="button"
                   onClick={() => setPlaying(true)}
-                  className="group relative h-full w-full"
+                  className="group absolute inset-0 h-full w-full"
                   aria-label="Play video"
                 >
-                  <img src={poster} alt="Sanjeevani hospital story" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-foreground/40 via-transparent to-transparent" />
 
                   <span className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-2xl transition-transform group-hover:scale-110">
@@ -71,7 +124,9 @@ export function VideoSection() {
                   </span>
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 text-white">
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80">Featured film · 2:14</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80">
+                        Featured film{duration ? ` · ${duration}` : ""}
+                      </div>
                       <div className="mt-1 font-display text-lg font-semibold">A day at Sanjeevani</div>
                     </div>
                   </div>

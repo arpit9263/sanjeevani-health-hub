@@ -20,6 +20,7 @@ type CareerSubmissionState = "idle" | "submitting" | "success" | "error";
 export function CareersTeaser() {
   const [careerForm, setCareerForm] = useState<CareerFormState>(emptyCareerForm);
   const [submissionState, setSubmissionState] = useState<CareerSubmissionState>("idle");
+  const [errorDetail, setErrorDetail] = useState<string | null>(null);
 
   const update = (key: keyof CareerFormState) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setCareerForm((prev) => ({ ...prev, [key]: e.target.value }));
@@ -48,6 +49,7 @@ export function CareersTeaser() {
     }
 
     setSubmissionState("submitting");
+    setErrorDetail(null);
 
     try {
       const response = await fetch(careersFormUrl, {
@@ -60,9 +62,15 @@ export function CareersTeaser() {
         setSubmissionState("success");
         resetForm();
       } else {
+        const data = await response.json().catch(() => null);
+        const reason = data?.errors?.[0]?.message || data?.error || `HTTP ${response.status}`;
+        console.error("Formspree submission failed:", reason);
+        setErrorDetail(reason);
         setSubmissionState("error");
       }
-    } catch {
+    } catch (err) {
+      console.error("Formspree request could not be sent:", err);
+      setErrorDetail("Network error — the request could not reach Formspree.");
       setSubmissionState("error");
     }
   };
@@ -151,7 +159,11 @@ export function CareersTeaser() {
                 <input type="hidden" name="source" value="careers-form" />
                 <button type="submit" disabled={submissionState === "submitting"} className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70">{submissionState === "submitting" ? "Submitting..." : careersFormUrl ? "Submit interest" : "Send via WhatsApp"}</button>
                 {submissionState === "success" && <p className="text-sm font-medium text-emerald-600">Thanks! We&apos;ll be in touch.</p>}
-                {submissionState === "error" && <p className="text-sm font-medium text-destructive">Your enquiry could not be posted right now. Please contact the hospital directly.</p>}
+                {submissionState === "error" && (
+                  <p className="text-sm font-medium text-destructive">
+                    Your enquiry could not be posted right now{errorDetail ? ` (${errorDetail})` : ""}. Please contact the hospital directly.
+                  </p>
+                )}
               </form>
             </div>
           </div>
