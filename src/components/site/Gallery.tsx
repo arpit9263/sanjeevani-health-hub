@@ -40,7 +40,16 @@ type MediaItem = {
 // real timeline of whatever file is linked here.
 // -----------------------------------------------------------------------------
 const videoItems: MediaItem[] = [
+ 
   {
+    type: "video",
+    src: photos[5].src,
+    label: "Hospital front & reception tour",
+    tag: "Video",
+    note: "Sample front and reception tour. Replace videoSrc with the real hospital video anytime.",
+    videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/hospitalvideo.mp4",
+  },
+   {
     type: "video",
     src: photos[0].src,
     label: "ICU facility walkthrough",
@@ -48,14 +57,6 @@ const videoItems: MediaItem[] = [
     span: "lg:col-span-2",
     note: "Sample hospital walkthrough video. Replace videoSrc with the real hospital video anytime.",
     videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/hospitalvideo.mp4",
-  },
-  {
-    type: "video",
-    src: photos[5].src,
-    label: "Hospital front & reception tour",
-    tag: "Video",
-    note: "Sample front and reception tour. Replace videoSrc with the real hospital video anytime.",
-    videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/icuvideo",
   },
 ];
 
@@ -66,7 +67,7 @@ const clipItems: MediaItem[] = [
     label: "Operation theatre clip",
     tag: "Clip",
     note: "Short clip format for reels and quick hospital updates.",
-    videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/hospitalvideo.mp4",
+    videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/icuvideo",
   },
   {
     type: "clip",
@@ -74,17 +75,17 @@ const clipItems: MediaItem[] = [
     label: "Nursing care moment",
     tag: "Clip",
     note: "Short care-team clip format for social media showcase.",
-    videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/reception",
+    videoSrc: "https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/nursepatient.mp4",
   },
-  {
-    type: "clip",
-    src: photos[7].src,
-    label: "Diagnostics quick view",
-    tag: "Clip",
-    note: "Short diagnostics/pathology clip — link not added yet.",
-    // TODO: no diagnostics clip file yet — add the videoSrc once it's ready.
-    videoSrc: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/waitingarea',
-  },
+  // {
+  //   type: "clip",
+  //   src: photos[7].src,
+  //   label: "Diagnostics quick view",
+  //   tag: "Clip",
+  //   note: "Short diagnostics/pathology clip — link not added yet.",
+  //   // TODO: no diagnostics clip file yet — add the videoSrc once it's ready.
+  //   videoSrc: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/waitingarea',
+  // },
 ];
 
 // -----------------------------------------------------------------------------
@@ -154,7 +155,7 @@ function MediaThumb({ item, onDuration }: { item: MediaItem; onDuration: (d: str
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.play().catch(() => {});
+          el.play().catch(() => { });
         } else {
           el.pause();
         }
@@ -422,9 +423,8 @@ export function Gallery({ mode = "home" }: GalleryProps) {
                   key={key}
                   type="button"
                   onClick={() => setFilter(key)}
-                  className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition ${
-                    filter === key ? "bg-primary text-primary-foreground shadow-sm" : "text-primary hover:bg-emerald-50"
-                  }`}
+                  className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition ${filter === key ? "bg-primary text-primary-foreground shadow-sm" : "text-primary hover:bg-emerald-50"
+                    }`}
                 >
                   <Icon className="h-4 w-4" /> {label}
                 </button>
