@@ -22,13 +22,13 @@ const centers = [
   { id: "neurosurgery", icon: Brain, title: "Neurosurgery", points: ["Neuro & spine care", "Specialist surgical guidance", "Emergency evaluation"], color: "#7C3AED", bg: "from-violet-50 via-white to-white" },
   { id: "diagnostics", icon: Microscope, title: "Diagnostics", points: ["Pathology support", "X-ray facility", "Faster clinical decisions"], color: "#D97706", bg: "from-amber-50 via-white to-white" },
   { id: "gynecology", icon: Baby, title: "OBS & Gynecology", points: ["Women’s health", "Pregnancy consultation", "Specialist support"], color: "#0EA5E9", bg: "from-sky-50 via-white to-white" },
-  { id: "insurance", icon: Eye, title: " Ayushman Bharat & T.P.A", points: ["In-house medicines", "Ayushman support", "Cashless/TPA guidance"], color: "#059669", bg: "from-teal-50 via-white to-white" },
+  { id: "insurance", icon: Eye, title: "Pharmacy & Insurance", points: ["In-house medicines", "Ayushman support", "Cashless/TPA guidance"], color: "#059669", bg: "from-teal-50 via-white to-white" },
 ];
 
 const trustItems = [
   {
     icon: ShieldCheck,
-    title: "Specialised-I.C.U Care",
+    title: "Speciality-led Care",
     text: "Clinical departments with focused doctor guidance.",
   },
   {

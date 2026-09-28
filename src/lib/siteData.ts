@@ -28,9 +28,9 @@ export const siteDetails = {
 };
 
 export const stats = [
-  { value: "15+", label: "Doctors", detail: "Experienced specialists and consultants" },
+  { value: "20+", label: "Doctors", detail: "Experienced specialists and consultants" },
   { value: "49+", label: "Beds", detail: "ICU and hospital care capacity" },
-  { value: "99 K+", label: "Patients Treated", detail: "Trusted by families across Jhansi" },
+  { value: "3 Lakh+", label: "Patients Treated", detail: "Trusted by families across Jhansi" },
   { value: "2019", label: "Established", detail: "Serving with dedication since 2019" },
 ];
 
@@ -70,6 +70,14 @@ export const medicalExperts = [
   { name: "Dr. Sandeep Kumar Patel", specialty: "Urologist" },
   { name: "Dr. Yogesh Dwivedi", specialty: "Cardiologist" },
   { name: "Dr. Amanjeet Kindra", specialty: "Neurosurgeon" },
+  { name: "Dr. P.K. Motish", specialty: "General Medicine" },
+  { name: "Dr. Vineet Kumar Mishra", specialty: "Neurosurgery" },
+  { name: "Dr. Utkarsh Srivastava", specialty: "ENT" },
+  { name: "Dr. Rajkumar Rajpoot", specialty: "General Surgery" },
+  { name: "Dr. Prateek Shivhare", specialty: "Dermatology" },
+  { name: "Dr. Arjit Gaurav", specialty: "Psychiatry" },
+  { name: "Dr. Abhishek Gupta", specialty: "Ophthalmology" },
+  { name: "Dr. Brajendra Singh", specialty: "Physiotherapy" },
 ];
 
 export const insurancePartners = [
@@ -105,7 +113,7 @@ export const hospitalServices = [
   { title: "Reports & Documentation", desc: "Support for reports, discharge summary, billing and medical documentation queries.", href: "/services#reports" },
 ];
 
-export const trustChips = ["24×7 Emergency", "ICU Support", "Cashless Insurance", "49+ Beds", "15+ Doctors"];
+export const trustChips = ["24×7 Emergency", "ICU Support", "Cashless Insurance", "49+ Beds", "20+ Doctors"];
 
 export const contactCards = [
   { label: "Emergency", value: hospitalInfo.emergency, sub: "24×7 emergency support" },

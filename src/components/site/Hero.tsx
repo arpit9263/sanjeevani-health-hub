@@ -5,8 +5,8 @@ import { ArrowRight, HeartPulse, Play, Pause, ShieldCheck, Stethoscope, Activity
 
 const slides = [
   {
-    video: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/icuvideo',
-    fallback: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/icuvideo',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782451221/0626_otpw4z.mp4',
     eyebrow: "24×7 Critical Care & Emergency",
     title: "Care that arrives",
     titleAccent: "the moment you need it.",
@@ -14,8 +14,8 @@ const slides = [
     chip: { icon: HeartPulse, label: "Ambulance in 12 min" },
   },
   {
-    video: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/reception',
-    fallback: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/reception',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782463811/0626_8_hwpomb.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782463811/0626_8_hwpomb.mp4;',
     eyebrow: "Advanced Diagnostics & Imaging",    
     title: "Precise answers,",
     titleAccent: "delivered by modern medicine.",
@@ -23,8 +23,8 @@ const slides = [
     chip: { icon: Activity, label: "3T MRI · 128 slice CT" },
   },
   {
-    video: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/waitingarea',
-    fallback: 'https://dhcb4o02dnne8.cloudfront.net/sanjeevaniicuhospital/waitingarea',
+    video: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782461936/0626_5_sm6kfh.mp4',
+    fallback: 'https://res.cloudinary.com/dusq7ltk1/video/upload/v1782461936/0626_5_sm6kfh.mp4',
     eyebrow: "Centers of Excellence",
     title: "Specialist programs",
     titleAccent: "for every stage of life.",
@@ -111,10 +111,10 @@ export function Hero() {
               Explore Specialties
             </a>
             <a
-              href="tel:8353933203"
+              href="tel:108"
               className="inline-flex items-center gap-2 rounded-full bg-destructive/90 px-6 py-3 text-sm font-semibold text-white shadow-xl backdrop-blur hover:bg-destructive"
             >
-              <HeartPulse className="h-4 w-4 animate-slow-pulse" /> Emergency
+              <HeartPulse className="h-4 w-4 animate-slow-pulse" /> Emergency · 108
             </a>
           </div>
 
