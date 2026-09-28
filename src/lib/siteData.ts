@@ -77,7 +77,6 @@ export const medicalExperts = [
   { name: "Dr. Prateek Shivhare", specialty: "Dermatology" },
   { name: "Dr. Arjit Gaurav", specialty: "Psychiatry" },
   { name: "Dr. Abhishek Gupta", specialty: "Ophthalmology" },
-  { name: "Dr. Brajendra Singh", specialty: "Physiotherapy" },
 ];
 
 export const insurancePartners = [
